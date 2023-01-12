@@ -1,5 +1,5 @@
 {
-	"appId": "io.ionic.starter",
+	"appId": "de.mundfmagic.magicApp",
 	"appName": "M & F Magic Verwaltung",
 	"webDir": "www",
 	"bundledWebRuntime": false
