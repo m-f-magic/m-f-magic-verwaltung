@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthConfig, AuthModule } from '@auth0/auth0-angular';
 import { Capacitor } from '@capacitor/core';
+import { LogoutButtonComponent } from './login/logout-button/logout-button.component';
+import { ProfileComponent } from './login/profile/profile.component';
 
 
 var config: AuthConfig = {
@@ -20,7 +22,11 @@ if (Capacitor.getPlatform() != "web"){
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    LogoutButtonComponent,
+    ProfileComponent
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

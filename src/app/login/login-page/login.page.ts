@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { NavController } from '@ionic/angular';
-import { AuthGuardGuard } from '../auth-guard.guard';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +9,18 @@ import { AuthGuardGuard } from '../auth-guard.guard';
 })
 export class LoginPage implements OnInit {
 
-  constructor(public auth: AuthService, private authGuard: AuthGuardGuard, private navCtrl: NavController) { 
+  constructor(public auth: AuthService, private router: Router) { 
     this.auth.isAuthenticated$.subscribe(() => {
-      console.log("verifiziert");
-      this.navCtrl.navigateRoot('/home');
+      this.loginSucces();
     })
   }
 
   ngOnInit() {
+  }
+
+  loginSucces(){
+    console.log("verifiziert");
+    this.router.navigate(['home']);
   }
 
 }
