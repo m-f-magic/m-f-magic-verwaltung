@@ -5,7 +5,7 @@ import { AuthService } from '@auth0/auth0-angular';
   selector: 'app-profile',
   template: `
   <div *ngIf="auth.user$ | async as user">
-    <ion-avatar class="avatar">
+    <ion-avatar class="avatar" slot="start">
       <img [src]="user.picture" [alt]="user.name" />
     </ion-avatar>
     <h2>{{ user.name }}</h2>
