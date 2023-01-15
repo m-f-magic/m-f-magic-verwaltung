@@ -14,7 +14,10 @@ import { ProfileComponent } from './login/profile/profile.component';
 
 var config: AuthConfig = {
   domain: "m-f-magic.eu.auth0.com",
-  clientId: "fDSUc0uR4lNOLvCKNAwv2vGTEHZyPoZz"
+  clientId: "fDSUc0uR4lNOLvCKNAwv2vGTEHZyPoZz",
+  scope: "write read",
+  audience: "magic_api"
+  
 };
 
 if (Capacitor.getPlatform() != "web"){
