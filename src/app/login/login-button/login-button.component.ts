@@ -3,6 +3,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { Browser } from '@capacitor/browser';
 import { Capacitor } from '@capacitor/core';
 import { LoadingController, Platform } from '@ionic/angular';
+import { State } from 'ionicons/dist/types/stencil-public-runtime';
 import { mergeMap } from 'rxjs/operators';
 
 @Component({
@@ -37,6 +38,10 @@ export class LoginButtonComponent {
   }
 
   loginSuccesful(loadingIndicator: HTMLIonLoadingElement){
+    var token_temp=this.auth.getAccessTokenSilently();
+    var  token
+    token_temp.subscribe(res =>    token= res);
+    
     loadingIndicator.dismiss();
     
   }
