@@ -15,7 +15,10 @@
   </ion-header>
 
   <div id="container">
-    <strong class="capitalize">Titel2</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ul id="appointment_container">
+    <li *ngFor="let user of appointments; index as i; first as isFirst" class="appointment_item">
+       {{user.notes}} 
+    </li>
+  </ul>
   </div>
 </ion-content>

@@ -8,10 +8,15 @@ import { AuthService } from '@auth0/auth0-angular';
     <ion-avatar class="avatar" slot="start">
       <img [src]="user.picture" [alt]="user.name" />
     </ion-avatar>
-    <h2>{{ user.name }}</h2>
+    <h2>{{ user.name }} Why</h2>
     <p>{{ user.email }}</p>
   </div>`,
 })
 export class ProfileComponent {
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService) {
+    
+  }
+  ngOnInit(){
+    
+  }
 }
