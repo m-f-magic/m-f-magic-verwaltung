@@ -3,20 +3,13 @@ import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-profile',
-  template: `
-  <div *ngIf="auth.user$ | async as user">
-    <ion-avatar class="avatar" slot="start">
-      <img [src]="user.picture" [alt]="user.name" />
-    </ion-avatar>
-    <h2>{{ user.name }} Why</h2>
-    <p>{{ user.email }}</p>
-  </div>`,
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent {
-  constructor(public auth: AuthService) {
-    
-  }
-  ngOnInit(){
-    
-  }
+export class ProfileComponent implements OnInit {
+
+  constructor(public auth: AuthService) { }
+
+  ngOnInit() {}
+
 }

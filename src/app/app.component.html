@@ -1,7 +1,7 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
+      <ion-content class="menu">
         <ion-list id="inbox-list">
           <ion-list-header>M & F Magic</ion-list-header>
           <ion-note>Für mehr Magie in Deinem Alltag!</ion-note>
@@ -14,9 +14,9 @@
           </ion-menu-toggle>
         </ion-list>
 
-        <ion-grid>
-          <ion-row><app-profile></app-profile></ion-row>
-          <ion-row><app-logout-button></app-logout-button></ion-row>
+        <ion-grid class="profile">
+          <ion-row class="ion-justify-content-start"><app-profile></app-profile></ion-row>
+          <ion-row class="ion-justify-content-center"><app-logout-button></app-logout-button></ion-row>
         </ion-grid>
         
 
