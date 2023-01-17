@@ -1,0 +1,8 @@
+<ion-refresher slot="fixed" [pullFactor]="0.7" [pullMin]="80" [pullMax]="130" (ionRefresh)="handleRefresh($event)">
+  <ion-refresher-content
+    pullingIcon="chevron-down-outline"
+    pullingText="Ziehen zum Aktualisieren"
+    refreshingSpinner="circular"
+    refreshingText="Aktualisiere Daten...">
+  </ion-refresher-content>
+</ion-refresher>
