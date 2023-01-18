@@ -7,8 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-import { DataRefresherComponent } from '../data/data-refresher/data-refresher.component';
-import { DataRefresherModule } from '../data/data-refresher/data-refresher.module';
 
 @NgModule({
   imports: [
@@ -18,6 +16,6 @@ import { DataRefresherModule } from '../data/data-refresher/data-refresher.modul
     HomePageRoutingModule,
     // DataRefresherModule
   ],
-  declarations: [HomePage, DataRefresherComponent]
+  declarations: [HomePage]
 })
 export class HomePageModule {}

@@ -18,12 +18,17 @@ const routes: Routes = [
   },
   {
     path: 'open-inquirys',
-    loadChildren: () => import('./open-inquirys/open-inquirys.module').then( m => m.OpenInquirysPageModule)
+    loadChildren: () => import('./first-sites/open-inquirys/open-inquirys.module').then( m => m.OpenInquirysPageModule)
   },
   {
     path: 'login',
     loadChildren: () => import('./login/login-page/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'appointment-overview',
+    loadChildren: () => import('./first-sites/appointment-overview/appointment-overview.module').then( m => m.AppointmentOverviewPageModule)
   }
+
 
 
 ];

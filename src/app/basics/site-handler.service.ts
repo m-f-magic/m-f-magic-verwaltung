@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class SiteHandlerService {
   public appPages = [
-    { title: 'Home', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
+    { title: 'Home', url: '/home', icon: 'home' },
+    { title: 'offene Anfragen', url: '/open-inquirys', icon: 'mail-unread' },
+    { title: 'Terminübersicht', url: '/appointment-overview', icon: 'calendar' },
     { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
     { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
