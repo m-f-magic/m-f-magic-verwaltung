@@ -8,6 +8,7 @@ import { AppointmentOverviewPageRoutingModule } from './appointment-overview-rou
 
 import { AppointmentOverviewPage } from './appointment-overview.page';
 import { PageLayoutModule } from 'src/app/basics/page-layout/page-layout.module';
+import { AppointmentItemComponent } from './appointment-item/appointment-item.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,9 @@ import { PageLayoutModule } from 'src/app/basics/page-layout/page-layout.module'
     AppointmentOverviewPageRoutingModule,
     PageLayoutModule
   ],
-  declarations: [AppointmentOverviewPage]
+  declarations: [
+    AppointmentOverviewPage,
+    AppointmentItemComponent
+  ]
 })
 export class AppointmentOverviewPageModule {}

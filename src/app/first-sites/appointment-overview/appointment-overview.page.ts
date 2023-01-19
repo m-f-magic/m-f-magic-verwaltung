@@ -9,13 +9,11 @@ import { DataHandlerService } from 'src/app/data/data-handler.service';
 export class AppointmentOverviewPage implements OnInit {
   appointments: any;
 
-  now: Date;
-
   constructor(private dataHandler: DataHandlerService) {
     // LOAD API DATA
     this.loadApiData();
     
-    this.now = new Date();
+    
 
    }
 
