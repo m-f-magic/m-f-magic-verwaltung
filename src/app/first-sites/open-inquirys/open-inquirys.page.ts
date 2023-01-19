@@ -14,8 +14,12 @@ export class OpenInquirysPage implements OnInit {
 
   constructor(private dataHandler: DataHandlerService) { }
   ngOnInit() {
+
     // this.appointments = this.dataHandler.appointments;
-    console.log(this.dataHandler.appointments);
+    this.dataHandler.appointments.subscribe(data => {
+      this.appointments = data;
+      // console.log(next);
+    })
     
   }
     

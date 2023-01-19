@@ -10,7 +10,6 @@ import { AuthConfig, AuthModule } from '@auth0/auth0-angular';
 import { Capacitor } from '@capacitor/core';
 import { LogoutButtonComponent } from './login/logout-button/logout-button.component';
 import { ProfileComponent } from './login/profile/profile.component';
-import { DataRefresherComponent } from './data/data-refresher/data-refresher.component';
 
 
 var config: AuthConfig = {
@@ -29,8 +28,7 @@ if (Capacitor.getPlatform() != "web"){
   declarations: [
     AppComponent,
     LogoutButtonComponent,
-    ProfileComponent,
-    DataRefresherComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
