@@ -1,0 +1,8 @@
+<app-page-layout [name]="'Terminübersicht'" >
+  <ul id="appointment_container">
+    <!-- {{appointments[0]}} -->
+    <ion-list *ngFor="let a of appointments; index as i; first as isFirst" class="appointment_item" lines="inset">
+      <appointment-item [appointment]="a"></appointment-item>
+    </ion-list>
+  </ul>
+</app-page-layout>

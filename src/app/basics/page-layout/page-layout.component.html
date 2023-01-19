@@ -6,3 +6,10 @@
     <ion-title>{{name}}</ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-data-refresher></app-data-refresher>
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+</ion-content>

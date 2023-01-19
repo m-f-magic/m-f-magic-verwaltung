@@ -1,0 +1,11 @@
+<app-page-layout [name]="'offene Anfragen'" >
+  Blub
+
+  <div id="container">
+    <ul id="appointment_container">
+    <li *ngFor="let user of appointments; index as i; first as isFirst" class="appointment_item">
+       {{user.notes}} 
+    </li>
+  </ul>
+  </div>
+</app-page-layout>

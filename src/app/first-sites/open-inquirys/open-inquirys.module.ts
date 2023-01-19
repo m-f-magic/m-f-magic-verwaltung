@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { OpenInquirysPageRoutingModule } from './open-inquirys-routing.module';
 
 import { OpenInquirysPage } from './open-inquirys.page';
+import { PageLayoutModule } from 'src/app/basics/page-layout/page-layout.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    OpenInquirysPageRoutingModule
+    OpenInquirysPageRoutingModule,
+    PageLayoutModule
   ],
   declarations: [OpenInquirysPage]
 })
