@@ -8,11 +8,10 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class DataHandlerService {
   token: string;
   appointments = new BehaviorSubject(null);
+  address = new BehaviorSubject(null);
 
   constructor(private auth: AuthService) {
     this.getToken();
-
-    
   }
 
   getToken(){
@@ -23,16 +22,23 @@ export class DataHandlerService {
     });
   }
 
-  loadApi(){
-    // this.appointments.next(
-    fetch('https://api.m-f-magic.de/appointments/',{headers: new Headers(
+  loadEndpoint(endpoint: string, subject: BehaviorSubject<any>){
+    // load Endpoint
+    fetch(`https://api.m-f-magic.de/${endpoint}/`,{headers: new Headers(
       {
         'Authorization': 'Bearer '+this.token})
       })
         .then(r => r.json())
         .then(j => { //data received
-          this.appointments.next(j);
-          console.log(j);
-        });
+          subject.next(j);
+          // this.appointments.next(j);
+          console.log(`Reloaded ${endpoint}:\n`, j);
+    });
+  }
+
+  loadApi(){
+    // load Address
+    this.loadEndpoint("appointments", this.appointments);
+    this.loadEndpoint("addresses", this.address);
   }
 }
