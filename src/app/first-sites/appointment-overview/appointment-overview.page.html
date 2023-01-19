@@ -1,3 +1,5 @@
 <app-page-layout [name]="'Terminübersicht'" >
-  TEST
+  <div *ngFor="let a of appointments">
+    {{a}}
+  </div>
 </app-page-layout>
