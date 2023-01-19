@@ -4,6 +4,9 @@
   "newProjectRoot": "projects",
   "projects": {
     "app": {
+      "i18n": {
+        "sourceLocale": "de-DE"
+      },
       "projectType": "application",
       "schematics": {},
       "root": "",

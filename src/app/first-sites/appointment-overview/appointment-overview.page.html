@@ -1,5 +1,14 @@
 <app-page-layout [name]="'Terminübersicht'" >
-  <div *ngFor="let a of appointments">
-    {{a}}
-  </div>
+  <ul id="appointment_container">
+    <!-- {{appointments[0]}} -->
+    <ion-list *ngFor="let a of appointments; index as i; first as isFirst" class="appointment_item" lines="inset">
+      <ion-item i18n button detail="true" *ngIf="a.endTime.$date < now">
+        <ion-label>
+          <h3>{{a.event}} bei {{a.event}}</h3>
+          <p>{{a.startTime.$date | date: 'EEE dd.MM.yyyy'}} {{a.startTime.$date | date: 'HH:mm'}}--<span *ngIf="!((a.endTime.$date | date: 'dd.MM') === (a.startTime.$date | date: 'dd.MM'))">{{a.endTime.$date | date: 'EEE dd.MM.yyyy '}}</span>{{a.endTime.$date | date: 'HH:mm'}} | {{a.notes}}</p>
+          <p></p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ul>
 </app-page-layout>
