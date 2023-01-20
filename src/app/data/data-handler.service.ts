@@ -41,4 +41,13 @@ export class DataHandlerService {
     this.loadEndpoint("appointments", this.appointments);
     this.loadEndpoint("addresses", this.address);
   }
+
+  getAdress(oid){
+    for (let adress of this.address.getValue()){
+      if (adress._id.$oid == oid){
+        return adress; //founded correct address
+      };
+    };
+    return null;
+  }
 }
