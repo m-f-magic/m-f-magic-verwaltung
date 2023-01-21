@@ -7,9 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-page ion-padding">
+  <div class="content"></div>
   <app-data-refresher></app-data-refresher>
-  <div class="content">
-    <ng-content></ng-content>
-  </div>
+      <ng-content></ng-content>
 </ion-content>

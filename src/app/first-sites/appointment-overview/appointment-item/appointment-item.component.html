@@ -8,6 +8,8 @@
     </ion-label>
   </ion-item>
   <div class="ion-padding" slot="content">
-    blabaljfsldafjdslöfj
+    <!-- {{adress}}, {{appointment.}} -->
+    <p>{{adress.street}}, {{adress.zip}} {{adress.city}}</p>
+    <ion-button (click)="openDetailedAppointment()"><ion-icon slot="start" name="create-outline"></ion-icon> mehr</ion-button>
   </div>
 </ion-accordion>
