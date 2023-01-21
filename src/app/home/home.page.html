@@ -1,4 +1,22 @@
 <app-page-layout [name]="'Home'" >
   <strong class="capitalize">Titel2</strong>
     <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  
+  <!-- Action Button at the end -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button data-desc="Termin bearbeiten" routerLink="/open-inquirys">
+        <ion-icon name="calendar-number-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button data-desc="Telefonat dokumentieren">
+        <ion-icon name="call-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button data-desc="neue Anfrage erstellen">
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </app-page-layout>
