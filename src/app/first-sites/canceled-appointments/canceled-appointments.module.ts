@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { CanceledAppointmentsPageRoutingModule } from './canceled-appointments-routing.module';
 
 import { CanceledAppointmentsPage } from './canceled-appointments.page';
+import { PageLayoutModule } from 'src/app/basics/page-layout/page-layout.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CanceledAppointmentsPageRoutingModule
+    CanceledAppointmentsPageRoutingModule,
+    PageLayoutModule
   ],
   declarations: [CanceledAppointmentsPage]
 })
