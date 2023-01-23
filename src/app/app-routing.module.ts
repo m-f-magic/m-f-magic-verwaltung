@@ -27,7 +27,23 @@ const routes: Routes = [
   {
     path: 'appointment-overview',
     loadChildren: () => import('./first-sites/appointment-overview/appointment-overview.module').then( m => m.AppointmentOverviewPageModule)
+  },  {
+    path: 'edit-inquirys',
+    loadChildren: () => import('./first-sites/edit-inquirys/edit-inquirys.module').then( m => m.EditInquirysPageModule)
+  },
+  {
+    path: 'stock',
+    loadChildren: () => import('./first-sites/stock/stock.module').then( m => m.StockPageModule)
+  },
+  {
+    path: 'past-appointments',
+    loadChildren: () => import('./first-sites/past-appointments/past-appointments.module').then( m => m.PastAppointmentsPageModule)
+  },
+  {
+    path: 'canceled-appointments',
+    loadChildren: () => import('./first-sites/canceled-appointments/canceled-appointments.module').then( m => m.CanceledAppointmentsPageModule)
   }
+
 
 
 
