@@ -9,6 +9,7 @@ export class DataHandlerService {
   token: string;
   appointments = new BehaviorSubject(null);
   address = new BehaviorSubject(null);
+  events = new BehaviorSubject(null);
 
   constructor(private auth: AuthService) {
     this.getToken();
@@ -40,12 +41,22 @@ export class DataHandlerService {
     // load Address
     this.loadEndpoint("appointments", this.appointments);
     this.loadEndpoint("addresses", this.address);
+    this.loadEndpoint("events", this.events);
   }
 
   getAdress(oid){
     for (let adress of this.address.getValue()){
       if (adress._id.$oid == oid){
         return adress; //founded correct address
+      };
+    };
+    return null;
+  }
+
+  getEvent(oid){
+    for (let event of this.events.getValue()){
+      if (event._id.$oid == oid){
+        return event; //founded correct event
       };
     };
     return null;

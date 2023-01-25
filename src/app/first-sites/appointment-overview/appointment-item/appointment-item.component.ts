@@ -10,6 +10,7 @@ export class AppointmentItemComponent implements OnInit {
   @Input() appointment: any;
   adress: any;
   now: Date;
+  event: any;
 
   constructor(private dataHandler: DataHandlerService) {
     this.now = new Date();
@@ -21,6 +22,8 @@ export class AppointmentItemComponent implements OnInit {
     } else {
       this.adress = {"street": null, "zip": null, "city": null};
     }
+
+    this.event = this.dataHandler.getEvent(this.appointment.event.$oid);
   }
 
   openDetailedAppointment(){
