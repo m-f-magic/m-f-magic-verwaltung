@@ -26,7 +26,15 @@ export class InquiryItemComponent implements OnInit {
     };
   }
 
-  openDetailedEvent(){
+  sendClassicOffer(){
     console.log("BLUB");
+  }
+
+  sendIndividualOffer(){
+    console.log("Individuelle");
+  }
+  
+  manual(){
+    console.log("Manuell bearbeiten")
   }
 }

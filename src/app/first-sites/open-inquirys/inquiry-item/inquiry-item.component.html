@@ -10,6 +10,11 @@
     <p *ngIf="appointment">Datum: {{appointment.startTime.$date | date: 'dd.MM.yyyy'}} | {{appointment.notes}}</p>
     <p *ngIf="adress">Ort: {{adress.street}}, {{adress.zip}} {{adress.city}} | Entfernung: {{adress.distance}} km</p>
     <!-- <p>{{event.</p> -->
-    <ion-button (click)="openDetailedEvent()"><ion-icon slot="start" name="create-outline"></ion-icon> mehr</ion-button>
+      <!-- es fehlt: noch api für kunden, conversationen für Kontaktdaten und letzte notes -->
+
+      <!--  -->
+    <ion-button (click)="sendClassicOffer()"><ion-icon slot="start" name="paper-plane-outline"></ion-icon> Standardangebot senden</ion-button>
+    <ion-button (click)="sendIndividualOffer()"><ion-icon slot="start" name="color-wand-outline"></ion-icon> individuelle Konditionen</ion-button>
+    <ion-button (click)="manual()"><ion-icon slot="start" name="settings-outline"></ion-icon> manuell bearbeiten</ion-button>
   </div>
 </ion-accordion>
