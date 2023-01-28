@@ -61,4 +61,13 @@ export class DataHandlerService {
     };
     return null;
   }
+
+  getAppointment(oid){
+    for (let app of this.appointments.getValue()){
+      if (app._id.$oid == oid){
+        return app; //founded correct appointment
+      };
+    };
+    return null;
+  }
 }

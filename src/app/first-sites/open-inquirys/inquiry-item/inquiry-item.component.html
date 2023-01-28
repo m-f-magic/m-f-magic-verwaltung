@@ -1,0 +1,15 @@
+<ion-accordion toggleIcon="caret-forward-outline">
+  <ion-item i18n detail="true" slot="header" color="grey" *ngIf="event.status === 0">
+    <ion-label>
+      <h2 class="test">{{event.description}}</h2>
+      <p>vom {{event.arrival_date.$date | date: 'dd.MM.yyyy'}}</p>
+      <p></p>
+    </ion-label>
+  </ion-item>
+  <div class="ion-padding" slot="content">
+    <p *ngIf="appointment">Datum: {{appointment.startTime.$date | date: 'dd.MM.yyyy'}} | {{appointment.notes}}</p>
+    <p *ngIf="adress">Ort: {{adress.street}}, {{adress.zip}} {{adress.city}} | Entfernung: {{adress.distance}} km</p>
+    <!-- <p>{{event.</p> -->
+    <ion-button (click)="openDetailedEvent()"><ion-icon slot="start" name="create-outline"></ion-icon> mehr</ion-button>
+  </div>
+</ion-accordion>
