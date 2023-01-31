@@ -8,6 +8,9 @@ import { OpenInquirysPageRoutingModule } from './open-inquirys-routing.module';
 
 import { OpenInquirysPage } from './open-inquirys.page';
 import { PageLayoutModule } from 'src/app/basics/page-layout/page-layout.module';
+import { InquiryItemComponent } from './inquiry-item/inquiry-item.component';
+
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   imports: [
@@ -15,8 +18,9 @@ import { PageLayoutModule } from 'src/app/basics/page-layout/page-layout.module'
     FormsModule,
     IonicModule,
     OpenInquirysPageRoutingModule,
-    PageLayoutModule
+    PageLayoutModule,
+    MatDividerModule
   ],
-  declarations: [OpenInquirysPage]
+  declarations: [OpenInquirysPage, InquiryItemComponent]
 })
 export class OpenInquirysPageModule {}

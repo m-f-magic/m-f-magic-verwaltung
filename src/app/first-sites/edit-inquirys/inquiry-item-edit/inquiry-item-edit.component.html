@@ -1,0 +1,40 @@
+<ion-accordion toggleIcon="caret-forward-outline">
+  <ion-item i18n detail="true" slot="header" color="grey">
+    <ion-label>
+      <h2 class="test">{{event.description}}</h2>
+      <p>zuletzt bearbeitet: {{event.lastAction.$date | date: 'dd.MM.yyyy'}}</p>
+      <p></p>
+    </ion-label>
+  </ion-item>
+  <div class="ion-padding" slot="content">
+    <h4 class="test">{{customer.firstName}} {{customer.lastName}}</h4>
+    <p *ngIf="!(customer.phone === '')">
+        <ion-icon name="call-outline" slot="start"></ion-icon>
+        {{customer.phone}}
+    </p>
+    <p *ngIf="!(customer.email === '')">
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        {{customer.email}}
+    </p>
+    <p *ngIf="appointment">
+        <ion-icon name="calendar-number-outline" slot="start"></ion-icon>
+        {{appointment.startTime.$date | date: 'EEE dd.MM.yyyy'}} {{appointment.startTime.$date | date: 'HH:mm'}}--<span *ngIf="!((appointment.endTime.$date | date: 'dd.MM') === (appointment.startTime.$date | date: 'dd.MM'))">{{appointment.endTime.$date | date: 'EEE dd.MM.yyyy '}}</span>{{appointment.endTime.$date | date: 'HH:mm'}} | {{appointment.notes}}
+    </p>
+    <p class="ion-text-wrap" *ngIf="adress">
+        <ion-icon name="location-outline" slot="start"></ion-icon>
+        {{adress.street}}, {{adress.zip}} {{adress.city}} <br> 
+        <ion-icon name="map-outline" slot="start"></ion-icon>
+        {{adress.distance}} km
+    </p>
+    
+    <mat-divider></mat-divider>
+    <p>{{conversationItem.notes}}</p>
+    <!-- <p>{{event.</p> -->
+      <!-- es fehlt: noch api für kunden, conversationen für Kontaktdaten und letzte notes -->
+
+      <!--  -->
+    <ion-button (click)="sendClassicOffer()"><ion-icon slot="start" name="paper-plane-outline"></ion-icon> Standardangebot senden</ion-button>
+    <ion-button (click)="sendIndividualOffer()"><ion-icon slot="start" name="color-wand-outline"></ion-icon> individuelle Konditionen</ion-button>
+    <ion-button (click)="manual()"><ion-icon slot="start" name="settings-outline"></ion-icon> manuell bearbeiten</ion-button>
+  </div>
+</ion-accordion>

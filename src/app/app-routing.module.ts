@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'home',
@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'open-inquirys',
-    loadChildren: () => import('./first-sites/open-inquirys/open-inquirys.module').then( m => m.OpenInquirysPageModule)
+    loadChildren: () => import('./first-sites/open-inquirys/open-inquirys.module').then( m => m.OpenInquirysPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -26,22 +26,23 @@ const routes: Routes = [
   },
   {
     path: 'appointment-overview',
-    loadChildren: () => import('./first-sites/appointment-overview/appointment-overview.module').then( m => m.AppointmentOverviewPageModule)
-  },  {
+    loadChildren: () => import('./first-sites/appointment-overview/appointment-overview.module').then( m => m.AppointmentOverviewPageModule), canActivate: [AuthGuard]
+  },
+  {
     path: 'edit-inquirys',
-    loadChildren: () => import('./first-sites/edit-inquirys/edit-inquirys.module').then( m => m.EditInquirysPageModule)
+    loadChildren: () => import('./first-sites/edit-inquirys/edit-inquirys.module').then( m => m.EditInquirysPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'stock',
-    loadChildren: () => import('./first-sites/stock/stock.module').then( m => m.StockPageModule)
+    loadChildren: () => import('./first-sites/stock/stock.module').then( m => m.StockPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'past-appointments',
-    loadChildren: () => import('./first-sites/past-appointments/past-appointments.module').then( m => m.PastAppointmentsPageModule)
+    loadChildren: () => import('./first-sites/past-appointments/past-appointments.module').then( m => m.PastAppointmentsPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'canceled-appointments',
-    loadChildren: () => import('./first-sites/canceled-appointments/canceled-appointments.module').then( m => m.CanceledAppointmentsPageModule)
+    loadChildren: () => import('./first-sites/canceled-appointments/canceled-appointments.module').then( m => m.CanceledAppointmentsPageModule), canActivate: [AuthGuard]
   }
 
 

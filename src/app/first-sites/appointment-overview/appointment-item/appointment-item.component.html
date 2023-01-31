@@ -1,8 +1,7 @@
-<!-- NOCH UMÄNDERN ZU <= !!!!!!!!!!!!!!!!!!!!! -->
 <ion-accordion toggleIcon="caret-forward-outline">
-  <ion-item i18n detail="true" slot="header" color="grey" *ngIf="appointment.endTime.$date < now">
+  <ion-item i18n detail="true" slot="header" color="grey" *ngIf="appointment.endTime.$date >= now">
     <ion-label>
-      <h3>{{appointment.event}} bei {{appointment.event}}</h3>
+      <h2>{{event.description}}</h2>
       <p>{{appointment.startTime.$date | date: 'EEE dd.MM.yyyy'}} {{appointment.startTime.$date | date: 'HH:mm'}}--<span *ngIf="!((appointment.endTime.$date | date: 'dd.MM') === (appointment.startTime.$date | date: 'dd.MM'))">{{appointment.endTime.$date | date: 'EEE dd.MM.yyyy '}}</span>{{appointment.endTime.$date | date: 'HH:mm'}} | {{appointment.notes}}</p>
       <p></p>
     </ion-label>

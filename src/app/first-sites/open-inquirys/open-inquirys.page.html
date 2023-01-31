@@ -1,11 +1,8 @@
 <app-page-layout [name]="'offene Anfragen'" >
-  Blub
-
-  <div id="container">
-    <ul id="appointment_container">
-    <li *ngFor="let user of appointments; index as i; first as isFirst" class="appointment_item">
-       {{user.notes}} 
-    </li>
-  </ul>
-  </div>
+  <!-- {{appointments[0]}} -->
+  <!-- <ion-list *ngFor="let a of appointments; index as i; first as isFirst" class="appointment_item" lines="inset"> -->
+  <ion-accordion-group [multiple]="false" class="accordionGroup" expand="inset">
+    <app-inquiry-item [event]="ev" *ngFor="let ev of events" class="inquiry-item" lines="inset"></app-inquiry-item>
+  </ion-accordion-group>
+  <!-- </ion-list> -->
 </app-page-layout>
