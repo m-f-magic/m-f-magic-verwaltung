@@ -1,3 +1,26 @@
-<p>
-  inquiry-item-edit works!
-</p>
+<ion-accordion toggleIcon="caret-forward-outline">
+  <ion-item i18n detail="true" slot="header" color="grey">
+    <ion-label>
+      <h2 class="test">{{event.description}}</h2>
+      <p>zuletzt bearbeitet: vom {{event.lastAction.$date | date: 'dd.MM.yyyy'}}</p>
+      <p></p>
+    </ion-label>
+  </ion-item>
+  <div class="ion-padding" slot="content">
+    
+    <h5>{{customer.firstName}} {{customer.lastName}}</h5>
+    <p *ngIf="!(customer.phone === '')">Tel: {{customer.phone}}</p>
+    <p *ngIf="!(customer.email === '')">E-Mail: {{customer.email}}</p><hr>
+    <p *ngIf="appointment">Datum: {{appointment.startTime.$date | date: 'dd.MM.yyyy'}} | {{appointment.notes}}</p>
+    <p *ngIf="adress">Ort: {{adress.street}}, {{adress.zip}} {{adress.city}} | Entfernung: {{adress.distance}} km</p>
+    <mat-divider></mat-divider>
+    <p>{{conversationItem.notes}}</p>
+    <!-- <p>{{event.</p> -->
+      <!-- es fehlt: noch api für kunden, conversationen für Kontaktdaten und letzte notes -->
+
+      <!--  -->
+    <ion-button (click)="sendClassicOffer()"><ion-icon slot="start" name="paper-plane-outline"></ion-icon> Standardangebot senden</ion-button>
+    <ion-button (click)="sendIndividualOffer()"><ion-icon slot="start" name="color-wand-outline"></ion-icon> individuelle Konditionen</ion-button>
+    <ion-button (click)="manual()"><ion-icon slot="start" name="settings-outline"></ion-icon> manuell bearbeiten</ion-button>
+  </div>
+</ion-accordion>

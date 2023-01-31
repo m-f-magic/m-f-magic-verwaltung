@@ -9,6 +9,7 @@ import { EditInquirysPageRoutingModule } from './edit-inquirys-routing.module';
 import { EditInquirysPage } from './edit-inquirys.page';
 import { PageLayoutModule } from 'src/app/basics/page-layout/page-layout.module';
 import { InquiryItemEditComponent } from './inquiry-item-edit/inquiry-item-edit.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { InquiryItemEditComponent } from './inquiry-item-edit/inquiry-item-edit.
     FormsModule,
     IonicModule,
     EditInquirysPageRoutingModule,
-    PageLayoutModule
+    PageLayoutModule,
+    MatDividerModule
   ],
   declarations: [EditInquirysPage, InquiryItemEditComponent]
 })
