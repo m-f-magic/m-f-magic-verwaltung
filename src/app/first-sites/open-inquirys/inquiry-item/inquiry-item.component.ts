@@ -11,6 +11,8 @@ export class InquiryItemComponent implements OnInit {
   adress: any;
   now: Date;
   appointment: any = null;
+  conversationItem: any;
+  customer: any;
 
   constructor(private dataHandler: DataHandlerService) {
     this.now = new Date();
@@ -24,6 +26,10 @@ export class InquiryItemComponent implements OnInit {
         this.adress = this.dataHandler.getAdress(this.appointment.location.$oid);
       }      
     };
+
+    this.customer = this.dataHandler.getCustomer(this.event.customer.$oid);
+
+    this.conversationItem = this.dataHandler.getConversationItem(this.event.conversation[0].$oid);
   }
 
   sendClassicOffer(){

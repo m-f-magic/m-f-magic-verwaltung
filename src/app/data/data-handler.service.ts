@@ -10,6 +10,8 @@ export class DataHandlerService {
   appointments = new BehaviorSubject(null);
   address = new BehaviorSubject(null);
   events = new BehaviorSubject(null);
+  customers = new BehaviorSubject(null);
+  conversationItems = new BehaviorSubject(null);
 
   constructor(private auth: AuthService) {
     this.getToken();
@@ -42,6 +44,8 @@ export class DataHandlerService {
     this.loadEndpoint("appointments", this.appointments);
     this.loadEndpoint("addresses", this.address);
     this.loadEndpoint("events", this.events);
+    this.loadEndpoint("customers", this.customers);
+    this.loadEndpoint("conversationItems", this.conversationItems);
   }
 
   getAdress(oid){
@@ -63,9 +67,27 @@ export class DataHandlerService {
   }
 
   getAppointment(oid){
-    for (let app of this.appointments.getValue()){
-      if (app._id.$oid == oid){
-        return app; //founded correct appointment
+    for (let appointment of this.appointments.getValue()){
+      if (appointment._id.$oid == oid){
+        return appointment; //founded correct appointment
+      };
+    };
+    return null;
+  }
+
+  getCustomer(oid){
+    for (let cust of this.customers.getValue()){
+      if (cust._id.$oid == oid){
+        return cust; //founded correct customer
+      };
+    };
+    return null;
+  }
+
+  getConversationItem(oid){
+    for (let conItem of this.conversationItems.getValue()){
+      if (conItem._id.$oid == oid){
+        return conItem; //founded correct conversationItem
       };
     };
     return null;
