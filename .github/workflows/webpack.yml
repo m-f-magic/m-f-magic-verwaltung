@@ -22,7 +22,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: npm dependencies
-      run: npm install 
+      run: yarn 
       
     - name: Build
       run: ng build
