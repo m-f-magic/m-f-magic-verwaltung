@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { DataHandlerService } from 'src/app/data/data-handler.service';
+import { EditOpenInquiryDialogComponent } from '../edit-open-inquiry-dialog/edit-open-inquiry-dialog.component';
 
 @Component({
   selector: 'app-inquiry-item',
@@ -14,7 +16,7 @@ export class InquiryItemComponent implements OnInit {
   conversationItem: any;
   customer: any;
 
-  constructor(private dataHandler: DataHandlerService) {
+  constructor(private dataHandler: DataHandlerService, private modalCtrl: ModalController) {
     this.now = new Date();
    }
 
@@ -35,8 +37,21 @@ export class InquiryItemComponent implements OnInit {
     // console.log(this.conversationItem.notes);
   }
 
-  sendClassicOffer(){
-    console.log("BLUB");
+  async openClassicOffer(){
+    const modal = await this.modalCtrl.create({
+      component: EditOpenInquiryDialogComponent,
+      componentProps: {
+        event: this.event,
+        adress: this.adress,
+        appointment: this.appointment,
+        customer: this.customer,
+        conversationItem: this.conversationItem,
+        classicType: true
+      }
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
   }
 
   sendIndividualOffer(){
