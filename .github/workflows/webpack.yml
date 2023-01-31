@@ -25,7 +25,10 @@ jobs:
       run: npm install 
       
     - name: Build
-      run: npm run  build --prod
+      run: ng build
+      
+    - name: Build Capacitor
+      run: npx cap sync web
       
     - name: Archive production artifacts
       uses: actions/upload-artifact@v3
