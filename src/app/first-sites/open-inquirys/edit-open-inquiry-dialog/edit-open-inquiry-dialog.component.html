@@ -42,12 +42,15 @@
     <ion-card-header>
       <ion-card-title>Angebot</ion-card-title>
     </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Zusatztext (1. Zeile Angebot)</ion-label>
+        <ion-textarea [autoGrow]="true" [spellcheck]="true" [(ngModel)]="additionalText" placeholder="Text eingeben..."></ion-textarea>
+      </ion-item>
+    </ion-card-content>
   </ion-card>
 
-  <ion-item>
-    <ion-label position="floating">Zusatztext (1. Zeile Angebot)</ion-label>
-    <ion-textarea [autoGrow]="true" [spellcheck]="true" [(ngModel)]="additionalText" placeholder="Text eingeben..."></ion-textarea>
-  </ion-item>
   <ion-item>
     <ion-label position="stacked">Your name</ion-label>
   </ion-item>

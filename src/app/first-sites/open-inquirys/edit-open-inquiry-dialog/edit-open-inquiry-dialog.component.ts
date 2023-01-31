@@ -41,11 +41,6 @@ export class EditOpenInquiryDialogComponent implements OnInit {
     console.log(this.classicType);
   }
 
-  test(){
-    // this.classicType = false;
-    this.classicType.next(true)
-  }
-
   cancel(){
     return this.modalCtrl.dismiss(null, 'cancel');
   }
