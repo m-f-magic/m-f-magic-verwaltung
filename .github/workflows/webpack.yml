@@ -21,11 +21,11 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm dependencies
+    - name: yarn dependencies
       run: yarn 
       
     - name: Build
-      run: ng build
+      run: yarn build
       
     - name: Build Capacitor
       run: npx cap sync web
