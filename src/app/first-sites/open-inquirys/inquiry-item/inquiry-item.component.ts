@@ -37,7 +37,7 @@ export class InquiryItemComponent implements OnInit {
     // console.log(this.conversationItem.notes);
   }
 
-  async openClassicOffer(){
+  async openOffer(){
     const modal = await this.modalCtrl.create({
       component: EditOpenInquiryDialogComponent,
       componentProps: {
@@ -45,17 +45,12 @@ export class InquiryItemComponent implements OnInit {
         adress: this.adress,
         appointment: this.appointment,
         customer: this.customer,
-        conversationItem: this.conversationItem,
-        classicType: true
+        conversationItem: this.conversationItem
       }
     });
     modal.present();
 
     const { data, role } = await modal.onWillDismiss();
-  }
-
-  sendIndividualOffer(){
-    console.log("Individuelle");
   }
   
   manual(){

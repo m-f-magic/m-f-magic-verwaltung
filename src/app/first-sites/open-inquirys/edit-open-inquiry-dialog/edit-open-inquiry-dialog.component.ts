@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-open-inquiry-dialog',
@@ -7,19 +8,42 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./edit-open-inquiry-dialog.component.scss'],
 })
 export class EditOpenInquiryDialogComponent implements OnInit {
+  // @ViewChild('eventTarget', { static: true }) eventTarget: ElementRef;
+  
   event: any;
   adress: any;
   appointment: any;
   customer: any;
   conversationItem: any;
-  classicType: boolean; //true: Standardkond., false: individuelle
+  classicType = new BehaviorSubject(true); //true: Standardkond., false: individuelle
 
   additionalText: string;
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private zone: NgZone, private modalCtrl: ModalController) { }
 
   ngOnInit() {
+    this.zone.runOutsideAngular(() => {
+      // const el = this.eventTarget.nativeElement as HTMLElement;
+      // el.addEventListener('click', e => {
+      //   this.zone.run(() => {
+      //   });
+      // })
+    });
     console.log(this.classicType);
+  }
+
+  change(){
+    if (this.classicType.getValue()){
+      this.classicType.next(false);
+    } else {
+      this.classicType.next(true);
+    }
+    console.log(this.classicType);
+  }
+
+  test(){
+    // this.classicType = false;
+    this.classicType.next(true)
   }
 
   cancel(){
