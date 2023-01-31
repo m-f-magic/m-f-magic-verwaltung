@@ -16,14 +16,8 @@ export class OpenInquirysPage implements OnInit {
   constructor(private dataHandler: DataHandlerService) {
     // LOAD API DATA
     this.loadApiData();
-
-
-    // test
     let id = this.appointments[0].location.$oid;
-    console.log(this.adress.find(id => id.$oid));
-    console.log(id)
-    console.log(this.dataHandler.getAdress(id));
-   }
+  }
 
   ngOnInit() {
   }
@@ -41,7 +35,12 @@ export class OpenInquirysPage implements OnInit {
 
     // import Event Data
     this.dataHandler.events.subscribe(data => {
-      this.events = data;
+      this.events = [];
+      for (let ev of data){
+        if (ev.status === 0){
+          this.events.push(ev);
+        }
+      };
     });
     
   }

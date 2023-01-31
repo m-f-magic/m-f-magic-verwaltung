@@ -8,6 +8,7 @@ import { EditInquirysPageRoutingModule } from './edit-inquirys-routing.module';
 
 import { EditInquirysPage } from './edit-inquirys.page';
 import { PageLayoutModule } from 'src/app/basics/page-layout/page-layout.module';
+import { InquiryItemEditComponent } from './inquiry-item-edit/inquiry-item-edit.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { PageLayoutModule } from 'src/app/basics/page-layout/page-layout.module'
     EditInquirysPageRoutingModule,
     PageLayoutModule
   ],
-  declarations: [EditInquirysPage]
+  declarations: [EditInquirysPage, InquiryItemEditComponent]
 })
 export class EditInquirysPageModule {}

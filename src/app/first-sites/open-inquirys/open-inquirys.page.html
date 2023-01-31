@@ -2,7 +2,7 @@
   <!-- {{appointments[0]}} -->
   <!-- <ion-list *ngFor="let a of appointments; index as i; first as isFirst" class="appointment_item" lines="inset"> -->
   <ion-accordion-group [multiple]="false" class="accordionGroup" expand="inset">
-    <app-inquiry-item [event]="ev" *ngFor="let ev of events; index as i; first as isFirst" class="inquiry-item" lines="inset"></app-inquiry-item>
+    <app-inquiry-item [event]="ev" *ngFor="let ev of events" class="inquiry-item" lines="inset"></app-inquiry-item>
   </ion-accordion-group>
   <!-- </ion-list> -->
 </app-page-layout>
