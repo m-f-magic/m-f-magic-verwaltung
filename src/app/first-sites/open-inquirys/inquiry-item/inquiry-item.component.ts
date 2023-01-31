@@ -30,6 +30,9 @@ export class InquiryItemComponent implements OnInit {
     this.customer = this.dataHandler.getCustomer(this.event.customer.$oid);
 
     this.conversationItem = this.dataHandler.getConversationItem(this.event.conversation[0].$oid);
+    
+    // this.conversationItem.notes = this.conversationItem.notes.replaceAll('\n', '<br/>');
+    // console.log(this.conversationItem.notes);
   }
 
   sendClassicOffer(){

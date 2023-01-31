@@ -14,7 +14,8 @@
     <p *ngIf="appointment">Datum: {{appointment.startTime.$date | date: 'dd.MM.yyyy'}} | {{appointment.notes}}</p>
     <p *ngIf="adress">Ort: {{adress.street}}, {{adress.zip}} {{adress.city}} | Entfernung: {{adress.distance}} km</p>
     <mat-divider></mat-divider>
-    <p>{{conversationItem.notes}}</p>
+    <p class="infoNotes">{{conversationItem.notes}}</p>
+    <!-- <div [innerHTML]="conversationItem.notes.replace('\n', '&#60;br>')"></div> -->
     <!-- <p>{{event.</p> -->
       <!-- es fehlt: noch api für kunden, conversationen für Kontaktdaten und letzte notes -->
 
