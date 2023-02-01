@@ -11,6 +11,7 @@ import { PageLayoutModule } from 'src/app/basics/page-layout/page-layout.module'
 import { InquiryItemComponent } from './inquiry-item/inquiry-item.component';
 
 import { MatDividerModule } from '@angular/material/divider';
+import { EditOpenInquiryDialogComponent } from './edit-open-inquiry-dialog/edit-open-inquiry-dialog.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,6 @@ import { MatDividerModule } from '@angular/material/divider';
     PageLayoutModule,
     MatDividerModule
   ],
-  declarations: [OpenInquirysPage, InquiryItemComponent]
+  declarations: [OpenInquirysPage, InquiryItemComponent, EditOpenInquiryDialogComponent]
 })
 export class OpenInquirysPageModule {}
