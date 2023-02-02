@@ -6,26 +6,9 @@
       <p></p>
     </ion-label>
   </ion-item>
+
   <div class="ion-padding" slot="content">
-    <h4 class="test">{{customer.firstName}} {{customer.lastName}}</h4>
-    <p *ngIf="!(customer.phone === '')">
-        <ion-icon name="call-outline" slot="start"></ion-icon>
-        {{customer.phone}}
-    </p>
-    <p *ngIf="!(customer.email === '')">
-        <ion-icon name="mail-outline" slot="start"></ion-icon>
-        {{customer.email}}
-    </p>
-    <p *ngIf="appointment">
-        <ion-icon name="calendar-number-outline" slot="start"></ion-icon>
-        {{appointment.startTime.$date | date: 'EEE dd.MM.yyyy'}} {{appointment.startTime.$date | date: 'HH:mm'}}--<span *ngIf="!((appointment.endTime.$date | date: 'dd.MM') === (appointment.startTime.$date | date: 'dd.MM'))">{{appointment.endTime.$date | date: 'EEE dd.MM.yyyy '}}</span>{{appointment.endTime.$date | date: 'HH:mm'}} | {{appointment.notes}}
-    </p>
-    <p class="ion-text-wrap" *ngIf="adress">
-        <ion-icon name="location-outline" slot="start"></ion-icon>
-        {{adress.street}}, {{adress.zip}} {{adress.city}} <br> 
-        <ion-icon name="map-outline" slot="start"></ion-icon>
-        {{adress.distance}} km
-    </p>
+    <app-short-event-details [event]="event"></app-short-event-details>
     
     <mat-divider></mat-divider>
     <p>{{conversationItem.notes}}</p>

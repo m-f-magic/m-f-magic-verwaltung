@@ -23,6 +23,8 @@
   </ion-segment>
 
   <!-- Anfragedaten nochmal -->
+  <app-short-event-details [event]="event"></app-short-event-details>
+
   <ion-card color="primary">
     <ion-card-header>
       <ion-card-title>{{event.description}}</ion-card-title>
@@ -30,9 +32,6 @@
     </ion-card-header>
 
     <ion-card-content>
-      <p *ngIf="appointment">Datum: {{appointment.startTime.$date | date: 'dd.MM.yyyy'}} | {{appointment.notes}}</p>
-      <p *ngIf="adress">Ort: {{adress.street}}, {{adress.zip}} {{adress.city}} | Entfernung: {{adress.distance}} km</p>
-      <mat-divider></mat-divider>
       <p class="infoNotes">{{conversationItem.notes}}</p>
     </ion-card-content>
   </ion-card>
