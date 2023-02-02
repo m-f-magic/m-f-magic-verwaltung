@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SingleEventDataService } from '../single-event-data/single-event-data.service';
 // import { SingleEventDataComponent } from '../../single-event-data/single-event-data.component';
-import { SingleEventDataService } from '../../single-event-data/single-event-data.service';
+
 
 @Component({
   selector: 'app-short-event-details',

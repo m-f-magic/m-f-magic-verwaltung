@@ -19,17 +19,9 @@ export class EditOpenInquiryDialogComponent implements OnInit {
 
   additionalText: string;
 
-  constructor(private zone: NgZone, private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
-    this.zone.runOutsideAngular(() => {
-      // const el = this.eventTarget.nativeElement as HTMLElement;
-      // el.addEventListener('click', e => {
-      //   this.zone.run(() => {
-      //   });
-      // })
-    });
-    console.log(this.classicType);
   }
 
   change(){

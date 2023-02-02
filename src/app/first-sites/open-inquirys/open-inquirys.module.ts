@@ -12,7 +12,7 @@ import { InquiryItemComponent } from './inquiry-item/inquiry-item.component';
 
 import { MatDividerModule } from '@angular/material/divider';
 import { EditOpenInquiryDialogComponent } from './edit-open-inquiry-dialog/edit-open-inquiry-dialog.component';
-import { ShortEventDetailsModule } from 'src/app/magic-components/short-event-details/short-event-details/short-event-details.module';
+import { ShortEventDetailsModule } from 'src/app/magic-components/short-event-details/short-event-details.module';
 
 @NgModule({
   imports: [

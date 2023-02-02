@@ -32,7 +32,6 @@ export class SingleEventDataService {
 
     // load conversation Data
     for (var conItem of this.event.conversation){
-      console.log(conItem);
       this.conversationItems.push(this.dataHandler.getConversationItem(conItem.$oid));
     };
   }  
