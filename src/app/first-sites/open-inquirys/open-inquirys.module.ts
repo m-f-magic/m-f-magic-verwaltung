@@ -22,7 +22,7 @@ import { ShortEventDetailsModule } from 'src/app/magic-components/short-event-de
     OpenInquirysPageRoutingModule,
     PageLayoutModule,
     MatDividerModule,
-    ShortEventDetailsModule
+    ShortEventDetailsModule,
   ],
   declarations: [OpenInquirysPage, InquiryItemComponent, EditOpenInquiryDialogComponent]
 })

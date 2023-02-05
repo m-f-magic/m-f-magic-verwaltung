@@ -42,6 +42,25 @@
     </ion-card-header>
 
     <ion-card-content>
+      <div *ngIf="event._cls =='Event.EventERLERNEN'">
+        <ion-item color="medium" [disabled]="classicType | async">
+          <ion-label position="floating">Basispreis (€):</ion-label>
+          <ion-input type="number" [(ngModel)]="event.basePrice"></ion-input>
+        </ion-item>
+
+        <ion-item color="medium" [disabled]="classicType | async">
+          <ion-label position="floating">Preis pro Kind (€):</ion-label>
+          <ion-input type="number" [(ngModel)]="event.pricePerPerson"></ion-input>
+        </ion-item>
+
+        <ion-item color="medium" [disabled]="classicType | async">
+          <ion-label position="floating">Fahrtkostenpauschale (€):</ion-label>
+          <ion-input type="number" [(ngModel)]="event.driveCostTotal"></ion-input>
+        </ion-item>
+
+      </div>
+
+
       <ion-item color="medium">
         <ion-label position="floating">Zusatztext (1. Zeile Angebot)</ion-label>
         <ion-textarea [autoGrow]="true" [spellcheck]="true" [(ngModel)]="additionalText" placeholder="Text eingeben..."></ion-textarea>

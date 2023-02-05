@@ -1,6 +1,8 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { DataHandlerService } from 'src/app/data/data-handler.service';
 
 @Component({
   selector: 'app-edit-open-inquiry-dialog',
@@ -17,12 +19,24 @@ export class EditOpenInquiryDialogComponent implements OnInit {
   conversationItem: any;
   classicType = new BehaviorSubject(true); //true: Standardkond., false: individuelle
 
+  defaultOffer: any;
+
   additionalText: string;
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, private dataHandler: DataHandlerService) { }
 
   ngOnInit() {
-  }
+    this.dataHandler.configDefaultOffer.subscribe(data => {
+      this.defaultOffer = data;
+    });
+
+    if (this.event._cls =="Event.EventERLERNEN"){
+      this.event['basePrice'] = this.defaultOffer.ERLERNEN.prices.bacePrice;
+      this.event['pricePerPerson'] = this.defaultOffer.ERLERNEN.prices.pricePerChildren;
+      this.event['driveCostTotal'] = this.defaultOffer.ERLERNEN.prices.driveCostMin;
+    }
+
+    }
 
   change(){
     if (this.classicType.getValue()){
