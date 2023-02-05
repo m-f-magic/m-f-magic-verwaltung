@@ -12,6 +12,7 @@ export class DataHandlerService {
   events = new BehaviorSubject(null);
   customers = new BehaviorSubject(null);
   conversationItems = new BehaviorSubject(null);
+  configDefaultOffer = new BehaviorSubject(null);
 
   constructor(private auth: AuthService) {
     this.getToken();
@@ -46,6 +47,7 @@ export class DataHandlerService {
     this.loadEndpoint("events", this.events);
     this.loadEndpoint("customers", this.customers);
     this.loadEndpoint("conversationItems", this.conversationItems);
+    this.loadEndpoint("offers", this.configDefaultOffer);
   }
 
   getAdress(oid){

@@ -23,28 +23,45 @@
   </ion-segment>
 
   <!-- Anfragedaten nochmal -->
-  <ion-card color="primary">
+  <app-short-event-details [event]="event"></app-short-event-details>
+
+  <ion-card color="light">
     <ion-card-header>
-      <ion-card-title>{{event.description}}</ion-card-title>
       <ion-card-subtitle>Anfrage vom {{event.arrival_date.$date | date: 'dd.MM.yyyy'}}</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
-      <p *ngIf="appointment">Datum: {{appointment.startTime.$date | date: 'dd.MM.yyyy'}} | {{appointment.notes}}</p>
-      <p *ngIf="adress">Ort: {{adress.street}}, {{adress.zip}} {{adress.city}} | Entfernung: {{adress.distance}} km</p>
-      <mat-divider></mat-divider>
       <p class="infoNotes">{{conversationItem.notes}}</p>
     </ion-card-content>
   </ion-card>
 
   <!-- Angebotsdaten -->
-  <ion-card>
+  <ion-card color="medium">
     <ion-card-header>
       <ion-card-title>Angebot</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      <ion-item>
+      <div *ngIf="event._cls =='Event.EventERLERNEN'">
+        <ion-item color="medium" [disabled]="classicType | async">
+          <ion-label position="floating">Basispreis (€):</ion-label>
+          <ion-input type="number" [(ngModel)]="event.basePrice"></ion-input>
+        </ion-item>
+
+        <ion-item color="medium" [disabled]="classicType | async">
+          <ion-label position="floating">Preis pro Kind (€):</ion-label>
+          <ion-input type="number" [(ngModel)]="event.pricePerPerson"></ion-input>
+        </ion-item>
+
+        <ion-item color="medium" [disabled]="classicType | async">
+          <ion-label position="floating">Fahrtkostenpauschale (€):</ion-label>
+          <ion-input type="number" [(ngModel)]="event.driveCostTotal"></ion-input>
+        </ion-item>
+
+      </div>
+
+
+      <ion-item color="medium">
         <ion-label position="floating">Zusatztext (1. Zeile Angebot)</ion-label>
         <ion-textarea [autoGrow]="true" [spellcheck]="true" [(ngModel)]="additionalText" placeholder="Text eingeben..."></ion-textarea>
       </ion-item>
