@@ -33,7 +33,11 @@ export class EditOpenInquiryDialogComponent implements OnInit {
     if (this.event._cls =="Event.EventERLERNEN"){
       this.event['basePrice'] = this.defaultOffer.ERLERNEN.prices.bacePrice;
       this.event['pricePerPerson'] = this.defaultOffer.ERLERNEN.prices.pricePerChildren;
-      this.event['driveCostTotal'] = this.defaultOffer.ERLERNEN.prices.driveCostMin;
+      if (this.adress.hasOwnProperty("driveCostTotal")) {
+        this.event['driveCostTotal'] = this.adress.driveCostTotal;
+      } else {
+        this.event['driveCostTotal'] = this.defaultOffer.ERLERNEN.prices.driveCostMin;
+      }
     }
 
     }
