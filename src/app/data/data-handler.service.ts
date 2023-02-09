@@ -50,6 +50,16 @@ export class DataHandlerService {
       .then(response => console.log(response.json()))
   }
 
+  postEndpoint(endpoint: string, object: any, id: string){
+    // post Endpoint
+    fetch(`https://api.m-f-magic.de/${endpoint}/${id}`, {
+      method: 'POST',
+      headers: new Headers({'Authorization': 'Bearer '+this.token, 'Content-Type': 'application/json'}),
+      body: JSON.stringify(object)
+    })
+      .then(response => console.log(response.json()))
+  }
+
   loadApi(){
     // load Address
     this.loadEndpoint("appointments", this.appointments);

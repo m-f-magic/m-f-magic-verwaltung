@@ -66,6 +66,7 @@ export class EditOpenInquiryDialogComponent implements OnInit {
       // const loading 
 
       this.dataHandler.putEndpoint("events", this.event, this.event._id.$oid);
+      this.dataHandler.putEndpoint("offers", this.event, this.event._id.$oid);
 
       return this.modalCtrl.dismiss('send inquiry', 'confirm');
     }
