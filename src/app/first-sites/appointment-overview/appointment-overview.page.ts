@@ -13,7 +13,7 @@ export class AppointmentOverviewPage implements OnInit {
 
   constructor(private dataHandler: DataHandlerService) {
     // LOAD API DATA
-    this.loadApiData();
+    
 
 
     // test
@@ -24,6 +24,7 @@ export class AppointmentOverviewPage implements OnInit {
    }
 
   ngOnInit() {
+    this.loadApiData();
   }
 
   loadApiData(){

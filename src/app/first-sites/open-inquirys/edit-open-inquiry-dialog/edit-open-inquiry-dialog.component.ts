@@ -1,6 +1,6 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DataHandlerService } from 'src/app/data/data-handler.service';
 
@@ -23,7 +23,12 @@ export class EditOpenInquiryDialogComponent implements OnInit {
 
   additionalText: string;
 
-  constructor(private modalCtrl: ModalController, private dataHandler: DataHandlerService) { }
+  constructor(
+    private modalCtrl: ModalController,
+    private dataHandler: DataHandlerService,
+    private alertController: AlertController,
+    private loadingCtrl: LoadingController
+    ) { }
 
   ngOnInit() {
     this.dataHandler.configDefaultOffer.subscribe(data => {
@@ -31,7 +36,7 @@ export class EditOpenInquiryDialogComponent implements OnInit {
     });
 
     if (this.event._cls =="Event.EventERLERNEN"){
-      this.event['basePrice'] = this.defaultOffer.ERLERNEN.prices.bacePrice;
+      this.event['basePrice'] = this.defaultOffer.ERLERNEN.prices.basePrice;
       this.event['pricePerPerson'] = this.defaultOffer.ERLERNEN.prices.pricePerChildren;
       if (this.adress.hasOwnProperty("driveCostTotal")) {
         this.event['driveCostTotal'] = this.adress.driveCostTotal;
@@ -55,8 +60,37 @@ export class EditOpenInquiryDialogComponent implements OnInit {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  confirm(){
-    return this.modalCtrl.dismiss('send inquiry', 'confirm');
+  async confirm(){
+    const {role} = await this.presentAlert();
+    if (role == 'confirm'){
+      // const loading 
+
+      this.dataHandler.putEndpoint("events", this.event, this.event._id.$oid);
+
+      return this.modalCtrl.dismiss('send inquiry', 'confirm');
+    }
+
+    return null
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Angebot absenden',
+      buttons: [
+        {
+          text: 'Nein',
+          role: 'cancel'
+        },
+        {
+          text: 'Ja',
+          role: 'confirm'
+        }
+      ]
+    });
+
+    await alert.present();
+
+    return await alert.onDidDismiss();
   }
 
 }
