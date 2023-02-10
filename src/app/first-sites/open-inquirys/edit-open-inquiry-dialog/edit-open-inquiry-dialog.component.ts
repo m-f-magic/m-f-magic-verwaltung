@@ -1,5 +1,6 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { AuthService } from '@auth0/auth0-angular';
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DataHandlerService } from 'src/app/data/data-handler.service';
@@ -12,6 +13,7 @@ import { DataHandlerService } from 'src/app/data/data-handler.service';
 export class EditOpenInquiryDialogComponent implements OnInit {
   // @ViewChild('eventTarget', { static: true }) eventTarget: ElementRef;
   
+  public sender: any;
   event: any;
   adress: any;
   appointment: any;
@@ -27,8 +29,13 @@ export class EditOpenInquiryDialogComponent implements OnInit {
     private modalCtrl: ModalController,
     private dataHandler: DataHandlerService,
     private alertController: AlertController,
-    private loadingCtrl: LoadingController
-    ) { }
+    private loadingCtrl: LoadingController,
+    public auth: AuthService
+    ) { 
+      this.auth.user$.subscribe(value => {
+          this.sender = value.email.replace("@m-f-magic.de","");
+      })
+    }
 
   ngOnInit() {
     this.dataHandler.configDefaultOffer.subscribe(data => {
@@ -57,6 +64,7 @@ export class EditOpenInquiryDialogComponent implements OnInit {
   }
 
   cancel(){
+    console.log(this.sender)
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 
@@ -66,7 +74,7 @@ export class EditOpenInquiryDialogComponent implements OnInit {
       // const loading 
 
       this.dataHandler.putEndpoint("events", this.event, this.event._id.$oid);
-      this.dataHandler.putEndpoint("offers", this.event, this.event._id.$oid);
+      this.dataHandler.putEndpoint("offers", {"sender": this.sender, "additionalText": this.additionalText, "eventID": this.event._id.$oid}, this.event._id.$oid);
 
       return this.modalCtrl.dismiss('send inquiry', 'confirm');
     }
