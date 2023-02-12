@@ -23,7 +23,7 @@ export class EditOpenInquiryDialogComponent implements OnInit {
 
   defaultOffer: any;
 
-  additionalText: string;
+  additionalText: string = "";
 
   constructor(
     private modalCtrl: ModalController,
@@ -72,6 +72,10 @@ export class EditOpenInquiryDialogComponent implements OnInit {
     const {role} = await this.presentAlert();
     if (role == 'confirm'){
       // const loading 
+
+      if (this.event.soloType > 0){
+        this.event.reqMembers = [this.sender[0].toUpperCase() + this.sender.slice(1)];
+      }
 
       this.dataHandler.putEndpoint("events", this.event, this.event._id.$oid);
       this.dataHandler.putEndpoint("offers", {"sender": this.sender, "additionalText": this.additionalText, "eventID": this.event._id.$oid}, this.event._id.$oid);
