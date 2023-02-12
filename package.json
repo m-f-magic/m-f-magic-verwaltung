@@ -33,6 +33,7 @@
     "@ionic/angular": "6",
     "@ionic/angular-server": "6",
     "@ionic/core": "6",
+    "cors": "^2.8.5",
     "ionicons": "^6.0.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

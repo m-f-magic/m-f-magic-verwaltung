@@ -43,20 +43,34 @@
 
     <ion-card-content>
       <div *ngIf="event._cls =='Event.EventERLERNEN'">
-        <ion-item color="medium" [disabled]="classicType | async">
-          <ion-label position="floating">Basispreis (€):</ion-label>
-          <ion-input type="number" [(ngModel)]="event.basePrice"></ion-input>
-        </ion-item>
+        <ion-segment [(ngModel)]="event.soloType">
+          <ion-segment-button value="0">normal</ion-segment-button>
+          <ion-segment-button value="1">SOLO Felix</ion-segment-button>
+          <ion-segment-button value="2">SOLO Marvin</ion-segment-button>
+        </ion-segment>
 
-        <ion-item color="medium" [disabled]="classicType | async">
-          <ion-label position="floating">Preis pro Kind (€):</ion-label>
-          <ion-input type="number" [(ngModel)]="event.pricePerPerson"></ion-input>
-        </ion-item>
-
-        <ion-item color="medium" [disabled]="classicType | async">
-          <ion-label position="floating">Fahrtkostenpauschale (€):</ion-label>
-          <ion-input type="number" [(ngModel)]="event.driveCostTotal"></ion-input>
-        </ion-item>
+        <ion-grid [fixed]="true">
+          <ion-row>
+            <ion-col>
+              <ion-item color="primary" [disabled]="classicType | async" class="roundBorder">
+                <ion-label position="floating">Basispreis (€):</ion-label>
+                <ion-input type="number" [(ngModel)]="event.basePrice"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item color="primary" [disabled]="classicType | async" class="roundBorder">
+                <ion-label position="floating">Preis pro Kind (€):</ion-label>
+                <ion-input type="number" [(ngModel)]="event.pricePerPerson"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item color="primary" [disabled]="classicType | async" class="roundBorder">
+                <ion-label position="floating">Fahrtkostenpauschale (€):</ion-label>
+                <ion-input type="number" [(ngModel)]="event.driveCostTotal"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 
       </div>
 
@@ -67,8 +81,3 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
-
-  <ion-item>
-    <ion-label position="stacked">Your name</ion-label>
-  </ion-item>
-</ion-content>

@@ -1,6 +1,7 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
+import { AuthService } from '@auth0/auth0-angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DataHandlerService } from 'src/app/data/data-handler.service';
 
@@ -12,6 +13,7 @@ import { DataHandlerService } from 'src/app/data/data-handler.service';
 export class EditOpenInquiryDialogComponent implements OnInit {
   // @ViewChild('eventTarget', { static: true }) eventTarget: ElementRef;
   
+  public sender: any;
   event: any;
   adress: any;
   appointment: any;
@@ -21,9 +23,19 @@ export class EditOpenInquiryDialogComponent implements OnInit {
 
   defaultOffer: any;
 
-  additionalText: string;
+  additionalText: string = "";
 
-  constructor(private modalCtrl: ModalController, private dataHandler: DataHandlerService) { }
+  constructor(
+    private modalCtrl: ModalController,
+    private dataHandler: DataHandlerService,
+    private alertController: AlertController,
+    private loadingCtrl: LoadingController,
+    public auth: AuthService
+    ) { 
+      this.auth.user$.subscribe(value => {
+          this.sender = value.email.replace("@m-f-magic.de","");
+      })
+    }
 
   ngOnInit() {
     this.dataHandler.configDefaultOffer.subscribe(data => {
@@ -31,9 +43,13 @@ export class EditOpenInquiryDialogComponent implements OnInit {
     });
 
     if (this.event._cls =="Event.EventERLERNEN"){
-      this.event['basePrice'] = this.defaultOffer.ERLERNEN.prices.bacePrice;
+      this.event['basePrice'] = this.defaultOffer.ERLERNEN.prices.basePrice;
       this.event['pricePerPerson'] = this.defaultOffer.ERLERNEN.prices.pricePerChildren;
-      this.event['driveCostTotal'] = this.defaultOffer.ERLERNEN.prices.driveCostMin;
+      if (this.adress.hasOwnProperty("driveCostTotal")) {
+        this.event['driveCostTotal'] = this.adress.driveCostTotal;
+      } else {
+        this.event['driveCostTotal'] = this.defaultOffer.ERLERNEN.prices.driveCostMin;
+      }
     }
 
     }
@@ -48,11 +64,46 @@ export class EditOpenInquiryDialogComponent implements OnInit {
   }
 
   cancel(){
+    console.log(this.sender)
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  confirm(){
-    return this.modalCtrl.dismiss('send inquiry', 'confirm');
+  async confirm(){
+    const {role} = await this.presentAlert();
+    if (role == 'confirm'){
+      // const loading 
+
+      if (this.event.soloType > 0){
+        this.event.reqMembers = [this.sender[0].toUpperCase() + this.sender.slice(1)];
+      }
+
+      this.dataHandler.putEndpoint("events", this.event, this.event._id.$oid);
+      this.dataHandler.putEndpoint("offers", {"sender": this.sender, "additionalText": this.additionalText, "eventID": this.event._id.$oid}, this.event._id.$oid);
+
+      return this.modalCtrl.dismiss('send inquiry', 'confirm');
+    }
+
+    return null
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Angebot absenden',
+      buttons: [
+        {
+          text: 'Nein',
+          role: 'cancel'
+        },
+        {
+          text: 'Ja',
+          role: 'confirm'
+        }
+      ]
+    });
+
+    await alert.present();
+
+    return await alert.onDidDismiss();
   }
 
 }
