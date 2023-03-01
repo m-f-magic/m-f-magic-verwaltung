@@ -12,6 +12,8 @@ import { InquiryItemEditComponent } from './inquiry-item-edit/inquiry-item-edit.
 import { MatDividerModule } from '@angular/material/divider';
 import { ShortEventDetailsModule } from 'src/app/magic-components/short-event-details/short-event-details.module';
 import { EditExistingInquiryDialogComponent } from './edit-existing-inquiry-dialog/edit-existing-inquiry-dialog.component';
+import { AutosizeModule } from 'ngx-autosize';
+import { ConversationItemsHistoryComponent } from './conversation-items-history/conversation-items-history.component';
 
 @NgModule({
   imports: [
@@ -21,8 +23,9 @@ import { EditExistingInquiryDialogComponent } from './edit-existing-inquiry-dial
     EditInquirysPageRoutingModule,
     PageLayoutModule,
     MatDividerModule,
-    ShortEventDetailsModule
+    ShortEventDetailsModule,
+    AutosizeModule
   ],
-  declarations: [EditInquirysPage, InquiryItemEditComponent, EditExistingInquiryDialogComponent]
+  declarations: [EditInquirysPage, InquiryItemEditComponent, EditExistingInquiryDialogComponent, ConversationItemsHistoryComponent]
 })
 export class EditInquirysPageModule {}

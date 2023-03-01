@@ -35,6 +35,7 @@
     "@ionic/core": "6",
     "cors": "^2.8.5",
     "ionicons": "^6.0.3",
+    "ngx-autosize": "^2.0.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

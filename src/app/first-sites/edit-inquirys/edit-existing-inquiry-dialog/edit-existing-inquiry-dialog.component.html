@@ -3,12 +3,14 @@
     <ion-buttons slot="start">
       <ion-icon slot="icon-only" name="close-circle-outline" (click)="cancel()"></ion-icon>
     </ion-buttons>
-      <ion-title>sdsdfsdfsdf</ion-title>
+      <ion-title>{{data.event.description}}</ion-title>
     <ion-buttons slot="end">
       <ion-icon slot="icon-only" name="checkmark-circle-outline" (click)="confirm()"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
+
+  <app-conversation-items-history [conversationItems]="data.conversationItems"></app-conversation-items-history>
 
 </ion-content>

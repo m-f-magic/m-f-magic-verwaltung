@@ -12,6 +12,7 @@ import { SingleEventDataService } from 'src/app/magic-components/single-event-da
 export class EditExistingInquiryDialogComponent implements OnInit {
   event: any;
   public sender: any;
+  newMsg: string;
 
   constructor(
     public data: SingleEventDataService,

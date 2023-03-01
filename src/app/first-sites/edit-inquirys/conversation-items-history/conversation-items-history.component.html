@@ -1,0 +1,39 @@
+<ion-grid>
+  <ion-row *ngFor="let con of conversationItems">
+    <ion-col size="9" *ngIf="con.initiative == 2" class="message customer">
+      <span>{{con.notes}}</span>
+      <div class="time" text-right><br>
+        <ion-icon *ngIf="con.type==1" name="mail-outline"></ion-icon>
+        <ion-icon *ngIf="con.type==2" name="call-outline"></ion-icon>
+        <ion-icon *ngIf="con.type==3" name="logo-whatsapp"></ion-icon>
+        <ion-icon *ngIf="con.type==4" name="send-outline"></ion-icon>
+        <ion-icon *ngIf="con.type==5" name="chatbubbles-outline"></ion-icon>
+      {{con.date.$date | date:'short'}}</div>
+    </ion-col>
+
+    <ion-col offset="3" size="9" *ngIf="con.initiative == 1" class="message mfmagic">
+      <span>{{con.notes}}</span>
+      <div class="time" text-right><br>
+        <ion-icon *ngIf="con.type==1" name="mail-outline"></ion-icon>
+        <ion-icon *ngIf="con.type==2" name="call-outline"></ion-icon>
+        <ion-icon *ngIf="con.type==3" name="logo-whatsapp"></ion-icon>
+        <ion-icon *ngIf="con.type==4" name="send-outline"></ion-icon>
+        <ion-icon *ngIf="con.type==5" name="chatbubbles-outline"></ion-icon>
+      {{con.date.$date | date:'short'}}</div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-toolbar color="light">
+  <ion-row align-items-center no-padding class="row">
+    <ion-col size="10">
+      <textarea autosize maxRows="5" [(ngModel)] = "newMsg" class="message-input"></textarea>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button expand="block" fill="clear" color="primary" [disabled]="newMsg === ''" class="msg-btn" (click)="sendMessage()">
+      <ion-icon name="send" slot="icon-only" color="primary"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-toolbar>
