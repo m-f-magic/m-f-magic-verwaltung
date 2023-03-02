@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { BehaviorSubject } from 'rxjs';
 import { SingleEventDataService } from 'src/app/magic-components/single-event-data/single-event-data.service';
 
 @Component({
@@ -13,6 +14,8 @@ export class EditExistingInquiryDialogComponent implements OnInit {
   event: any;
   public sender: any;
   newMsg: string;
+
+  editable = new BehaviorSubject(true);
 
   constructor(
     public data: SingleEventDataService,
@@ -69,6 +72,24 @@ export class EditExistingInquiryDialogComponent implements OnInit {
     await alert.present();
 
     return await alert.onDidDismiss();
+  }
+
+  onChangeStartDate(value){
+    let newDate = new Date(value);
+    this.data.appointment.startTime.$date = newDate.getTime();
+  }
+
+  onChangeEndDate(value){
+    let newDate = new Date(value);
+    this.data.appointment.endTime.$date = newDate.getTime();
+  }
+
+  changeEditable(){
+    if (this.editable.getValue()){
+      this.editable.next(false);
+    } else {
+      this.editable.next(true);
+    }
   }
 
 }

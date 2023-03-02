@@ -10,6 +10,8 @@ import { AuthConfig, AuthModule } from '@auth0/auth0-angular';
 import { Capacitor } from '@capacitor/core';
 import { LogoutButtonComponent } from './login/logout-button/logout-button.component';
 import { ProfileComponent } from './login/profile/profile.component';
+import { MaterialModule } from './basics/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 var config: AuthConfig = {
@@ -31,7 +33,9 @@ if (Capacitor.getPlatform() != "web"){
     ProfileComponent
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     AuthModule.forRoot(config),

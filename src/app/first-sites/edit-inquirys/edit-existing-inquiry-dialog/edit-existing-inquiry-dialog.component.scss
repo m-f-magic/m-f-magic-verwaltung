@@ -1,0 +1,16 @@
+ion-input{
+    // border: 1px solid #ffff;
+    // flex: 0 0 100% !important;
+}
+
+ion-modal {
+    &.bottom-end {
+      align-items: flex-end;
+      --height: auto;
+      .ion-page {
+        position: relative;
+        display: block;
+        contain: content;
+      }
+    }
+  }

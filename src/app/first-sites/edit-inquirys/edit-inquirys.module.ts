@@ -14,6 +14,7 @@ import { ShortEventDetailsModule } from 'src/app/magic-components/short-event-de
 import { EditExistingInquiryDialogComponent } from './edit-existing-inquiry-dialog/edit-existing-inquiry-dialog.component';
 import { AutosizeModule } from 'ngx-autosize';
 import { ConversationItemsHistoryComponent } from './conversation-items-history/conversation-items-history.component';
+import { MaterialModule } from 'src/app/basics/material.module';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { ConversationItemsHistoryComponent } from './conversation-items-history/
     IonicModule,
     EditInquirysPageRoutingModule,
     PageLayoutModule,
-    MatDividerModule,
+    MaterialModule,
     ShortEventDetailsModule,
     AutosizeModule
   ],
