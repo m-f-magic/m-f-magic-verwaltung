@@ -11,76 +11,13 @@
 </ion-header>
 <ion-content class="ion-padding">
 
-  <ion-card i18n color="primary">
-    <ion-card-header>
-      <ion-card-title>bisherige Eventdaten <ion-toggle color="medium" (ionChange)="changeEditable()" [checked]="false" class="ion-no-margin ion-no-padding"></ion-toggle></ion-card-title>
-    </ion-card-header>
+<ion-accordion-group [multiple]="false" class="accordionGroup" expand="inset">
+
+  <app-edit-general-event-details [data]="data"></app-edit-general-event-details>
+
   
-    <ion-card-content>     
 
-      <ion-grid [fixed]="true" class="ion-no-margin">
-        <ion-row class="ion-align-items-center ion-no-padding">
-          <ion-col size="auto"><ion-icon name="person-circle-outline" class="ion-no-margin ion-no-padding"></ion-icon></ion-col>
-          <ion-col size="5"><ion-input [disabled]="editable | async" [(ngModel)]="data.customer.firstName" class="ion-no-margin ion-no-padding"></ion-input></ion-col>
-          <ion-col size="5"><ion-input [disabled]="editable | async" [(ngModel)]="data.customer.lastName" class="ion-no-margin ion-no-padding"></ion-input></ion-col>
-        </ion-row>
-
-        <ion-row class="ion-align-items-center ion-no-padding">
-          <ion-col size="auto"><ion-icon name="call-outline" class="ion-no-margin ion-no-padding"></ion-icon></ion-col>
-          <ion-col><ion-input [disabled]="editable | async" [(ngModel)]="data.customer.phone" class="ion-no-margin ion-no-padding"></ion-input></ion-col>
-        </ion-row>
-
-        <ion-row class="ion-align-items-center ion-no-padding">
-          <ion-col size="auto"><ion-icon name="mail-outline" class="ion-no-margin ion-no-padding"></ion-icon></ion-col>
-          <ion-col><ion-input [disabled]="editable | async" [(ngModel)]="data.customer.email" class="ion-no-margin ion-no-padding"></ion-input></ion-col>
-        </ion-row>
-
-        <ion-row class="ion-align-items-center ion-no-padding">
-          <ion-col size="auto"><ion-icon name="calendar-number-outline" class="ion-no-margin ion-no-padding"></ion-icon></ion-col>
-          <ion-col size="auto"><ion-label class="ion-no-margin ion-no-padding" id="open-modal-start">{{data.appointment.startTime.$date | date: 'dd.MM.yyyy | HH:mm'}}</ion-label></ion-col>
-          <ion-col size="auto" style="text-align: center;"><ion-icon name="arrow-forward-outline"></ion-icon></ion-col>
-          <ion-col size="auto" class="ion-no-margin ion-no-padding"><ion-label class="ion-no-margin ion-no-padding" id="open-modal-end">{{data.appointment.endTime.$date | date: 'dd.MM.yyyy | HH:mm'}}</ion-label></ion-col>
-        </ion-row>
-
-        <ion-row class="ion-align-items-center ion-no-padding">
-          <ion-col size="auto"><ion-icon name="location-outline" class="ion-no-margin ion-no-padding"></ion-icon></ion-col>
-          <ion-col><ion-input [disabled]="editable | async" [(ngModel)]="data.adress.adressSTR" class="ion-no-margin ion-no-padding"></ion-input></ion-col>
-        </ion-row>
-
-        <ion-row class="ion-align-items-center ion-no-padding">
-          <ion-col size="auto"><ion-icon name="map-outline" class="ion-no-margin ion-no-padding"></ion-icon></ion-col>
-          <ion-col>{{data.adress.distance}} km</ion-col>
-        </ion-row>
-
-      </ion-grid>
-
-      <ion-modal *ngIf="!(editable | async)" trigger="open-modal-start" [cssClass]="'bottom-end'">
-        <ng-template>
-          <ion-datetime
-            [ngModel]="data.appointment.startTime.$date | date: 'yyyy-MM-ddTHH:mm'"
-            (ngModelChange)="onChangeStartDate($event)"
-            minuteValues="0,15,30,45"
-            size="cover"
-            [showDefaultButtons]="true"
-          ></ion-datetime>
-        </ng-template>
-      </ion-modal>
-
-      <ion-modal *ngIf="!(editable | async)" trigger="open-modal-end" [cssClass]="'bottom-end'">
-        <ng-template>
-          <ion-datetime
-            [ngModel]="data.appointment.endTime.$date | date: 'yyyy-MM-ddTHH:mm'"
-            (ngModelChange)="onChangeEndDate($event)"
-            minuteValues="0,15,30,45"
-            size="cover"
-            [showDefaultButtons]="true"
-          ></ion-datetime>
-        </ng-template>
-      </ion-modal>
-  
-    </ion-card-content>
-
-  </ion-card>
+</ion-accordion-group>
 
 </ion-content>
 

@@ -15,7 +15,7 @@ export class EditExistingInquiryDialogComponent implements OnInit {
   public sender: any;
   newMsg: string;
 
-  editable = new BehaviorSubject(true);
+
 
   constructor(
     public data: SingleEventDataService,
@@ -73,23 +73,4 @@ export class EditExistingInquiryDialogComponent implements OnInit {
 
     return await alert.onDidDismiss();
   }
-
-  onChangeStartDate(value){
-    let newDate = new Date(value);
-    this.data.appointment.startTime.$date = newDate.getTime();
-  }
-
-  onChangeEndDate(value){
-    let newDate = new Date(value);
-    this.data.appointment.endTime.$date = newDate.getTime();
-  }
-
-  changeEditable(){
-    if (this.editable.getValue()){
-      this.editable.next(false);
-    } else {
-      this.editable.next(true);
-    }
-  }
-
 }
