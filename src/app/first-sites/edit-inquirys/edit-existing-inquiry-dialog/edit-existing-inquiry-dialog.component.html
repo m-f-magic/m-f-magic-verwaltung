@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="close-circle-outline" (click)="cancel()"></ion-icon>
+    </ion-buttons>
+      <ion-title>{{data.event.description}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon slot="icon-only" name="checkmark-circle-outline" (click)="confirm()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+<ion-accordion-group [multiple]="true" class="accordionGroup" expand="inset">
+
+  <app-edit-general-event-details [data]="data"></app-edit-general-event-details>
+
+
+  <ion-accordion toggleIcon="caret-forward-outline">
+    <ion-item i18n detail="true" slot="header" color="primary">
+      <ion-label>
+  
+        <h2 class="headline">bisherige Nachrichten</h2>
+      </ion-label>
+    </ion-item>
+  
+    <div class="ion-padding" slot="content">
+      <app-conversation-items-history [conversationItems]="data.conversationItems"></app-conversation-items-history>
+    </div>
+  </ion-accordion>
+
+  
+
+</ion-accordion-group>
+
+<!-- </ion-content> -->
+
+  
+  
+  <!-- OLD APPOINTMENT -->
+    <!-- {{data.appointment.startTime.$date | date: 'EEE dd.MM.yyyy'}} {{data.appointment.startTime.$date | date: 'HH:mm'}}--<span *ngIf="!((data.appointment.endTime.$date | date: 'dd.MM') === (data.appointment.startTime.$date | date: 'dd.MM'))">{{data.appointment.endTime.$date | date: 'EEE dd.MM.yyyy '}}</span>{{data.appointment.endTime.$date | date: 'HH:mm'}} | {{data.appointment.notes}} -->
+<!-- <ion-content class="ion-padding"> -->
+  
+
+</ion-content>

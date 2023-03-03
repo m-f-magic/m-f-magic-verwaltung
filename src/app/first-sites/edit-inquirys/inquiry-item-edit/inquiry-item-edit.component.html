@@ -1,8 +1,8 @@
 <ion-accordion toggleIcon="caret-forward-outline">
   <ion-item i18n detail="true" slot="header" color="grey">
     <ion-label>
-      <h2 class="test">{{event.description}}</h2>
-      <p>zuletzt bearbeitet: {{event.lastAction.$date | date: 'dd.MM.yyyy'}}</p>
+      <h2 class="headline">{{event.description}}</h2>
+      <p>zuletzt bearbeitet: {{data.event.lastAction.$date | date: 'dd.MM.yyyy'}}</p>
       <p></p>
     </ion-label>
   </ion-item>
@@ -11,13 +11,32 @@
     <app-short-event-details [event]="event"></app-short-event-details>
     
     <mat-divider></mat-divider>
-    <p>{{conversationItem.notes}}</p>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title *ngIf="data.conversationItems.at(-1).initiative == 1">Nachricht von uns</ion-card-title>
+        <ion-card-title *ngIf="data.conversationItems.at(-1).initiative == 2">Nachricht vom Kunden</ion-card-title>
+        <ion-card-subtitle>
+          <!-- ICONS: 1 - EMail, 2 - Telefonat, 3 - WhatsApp, 4 - Telegram, 5 - mündlich / persönlich -->
+          <ion-icon *ngIf="data.conversationItems.at(-1).type==1" name="mail-outline"></ion-icon>
+          <ion-icon *ngIf="data.conversationItems.at(-1).type==2" name="call-outline"></ion-icon>
+          <ion-icon *ngIf="data.conversationItems.at(-1).type==3" name="logo-whatsapp"></ion-icon>
+          <ion-icon *ngIf="data.conversationItems.at(-1).type==4" name="send-outline"></ion-icon>
+          <ion-icon *ngIf="data.conversationItems.at(-1).type==5" name="chatbubbles-outline"></ion-icon>
+          {{data.conversationItems.at(-1).date.$date | date: 'dd.MM.yyyy'}}
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        {{data.conversationItems.at(-1).notes}}
+      </ion-card-content>
+    </ion-card>
+    
     <!-- <p>{{event.</p> -->
       <!-- es fehlt: noch api für kunden, conversationen für Kontaktdaten und letzte notes -->
 
       <!--  -->
-    <ion-button (click)="sendClassicOffer()"><ion-icon slot="start" name="paper-plane-outline"></ion-icon> Standardangebot senden</ion-button>
-    <ion-button (click)="sendIndividualOffer()"><ion-icon slot="start" name="color-wand-outline"></ion-icon> individuelle Konditionen</ion-button>
-    <ion-button (click)="manual()"><ion-icon slot="start" name="settings-outline"></ion-icon> manuell bearbeiten</ion-button>
+    <ion-button (click)="editEvent()"><ion-icon slot="start" name="open-outline"></ion-icon>Event bearbeiten</ion-button>
+    <!-- <ion-button (click)="sendIndividualOffer()"><ion-icon slot="start" name="color-wand-outline"></ion-icon> individuelle Konditionen</ion-button>
+    <ion-button (click)="manual()"><ion-icon slot="start" name="settings-outline"></ion-icon> manuell bearbeiten</ion-button> -->
   </div>
 </ion-accordion>

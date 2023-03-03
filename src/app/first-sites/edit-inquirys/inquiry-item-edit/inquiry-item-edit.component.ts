@@ -1,46 +1,35 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { DataHandlerService } from 'src/app/data/data-handler.service';
+import { SingleEventDataService } from 'src/app/magic-components/single-event-data/single-event-data.service';
+import { EditExistingInquiryDialogComponent } from '../edit-existing-inquiry-dialog/edit-existing-inquiry-dialog.component';
 
 @Component({
   selector: 'app-inquiry-item-edit',
   templateUrl: './inquiry-item-edit.component.html',
   styleUrls: ['./inquiry-item-edit.component.scss'],
+  providers:[SingleEventDataService]
 })
 export class InquiryItemEditComponent implements OnInit {
   @Input() event: any;
-  adress: any;
-  now: Date;
-  appointment: any = null;
-  conversationItem: any;
-  customer: any;
 
-  constructor(private dataHandler: DataHandlerService) {
-    this.now = new Date();
+  constructor(public data: SingleEventDataService, private modalCtrl: ModalController,) {
    }
 
   ngOnInit() {
-    if (this.event.hasOwnProperty("appointments")){
-      this.appointment = this.dataHandler.getAppointment(this.event.appointments.slice(-1)[0].$oid);
-
-      if (this.appointment.hasOwnProperty("location")){
-        this.adress = this.dataHandler.getAdress(this.appointment.location.$oid);
-      }      
-    };
-
-    this.customer = this.dataHandler.getCustomer(this.event.customer.$oid);
-
-    this.conversationItem = this.dataHandler.getConversationItem(this.event.conversation[0].$oid);
+    this.data.initialize(this.event);
+    console.log(this.data);
   }
 
-  sendClassicOffer(){
-    console.log("BLUB");
-  }
+  async editEvent(){
+    const modal = await this.modalCtrl.create({
+      component: EditExistingInquiryDialogComponent,
+      componentProps: {
+        event: this.event
+      }
+    });
+    modal.present();
 
-  sendIndividualOffer(){
-    console.log("Individuelle");
-  }
-  
-  manual(){
-    console.log("Manuell bearbeiten")
+    const { data, role } = await modal.onWillDismiss();
   }
 }

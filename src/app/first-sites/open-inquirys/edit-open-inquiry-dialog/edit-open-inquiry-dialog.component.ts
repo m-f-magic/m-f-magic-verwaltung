@@ -73,8 +73,16 @@ export class EditOpenInquiryDialogComponent implements OnInit {
     if (role == 'confirm'){
       // const loading 
 
-      if (this.event.soloType > 0){
-        this.event.reqMembers = [this.sender[0].toUpperCase() + this.sender.slice(1)];
+      switch (this.event.soloType){
+        case 1: {
+          this.event.reqMembers = ["Felix"];
+          break;
+        }
+        case 2: {
+          this.event.reqMembers = ["Marvin"];
+          break;
+        }
+        default: {break;}
       }
 
       this.dataHandler.putEndpoint("events", this.event, this.event._id.$oid);
