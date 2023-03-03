@@ -11,35 +11,31 @@
 </ion-header>
 <ion-content class="ion-padding">
 
-<ion-accordion-group [multiple]="true" class="accordionGroup" expand="inset">
-
-  <app-edit-general-event-details [data]="data"></app-edit-general-event-details>
-
-
-  <ion-accordion toggleIcon="caret-forward-outline">
-    <ion-item i18n detail="true" slot="header" color="primary">
-      <ion-label>
+  <ion-item>
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <mat-select disableRipple value="{{data.event.status}}">
+        <mat-option value="1">offen</mat-option>
+        <mat-option value="2">zugesagt</mat-option>
+        <mat-option value="3">abgesagt</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ion-item>
   
-        <h2 class="headline">bisherige Nachrichten</h2>
-      </ion-label>
-    </ion-item>
-  
-    <div class="ion-padding" slot="content">
-      <app-conversation-items-history [conversationItems]="data.conversationItems"></app-conversation-items-history>
-    </div>
-  </ion-accordion>
+  <ion-item>
+    <ion-select value="{{data.event.status}}" [multiple]="false" interface="popover">
+      <ion-select-option value=1>offen</ion-select-option>
+      <ion-select-option value=2>zugesagt</ion-select-option>
+      <ion-select-option value=3>abgesagt</ion-select-option>
+    </ion-select>
+  </ion-item>
 
-  
+  <ion-accordion-group [multiple]="true" class="accordionGroup" expand="inset">
 
-</ion-accordion-group>
+    <app-edit-general-event-details [data]="data"></app-edit-general-event-details>
+    <app-conversation-items-history [conversationItems]="data.conversationItems"></app-conversation-items-history>
 
-<!-- </ion-content> -->
+    
 
-  
-  
-  <!-- OLD APPOINTMENT -->
-    <!-- {{data.appointment.startTime.$date | date: 'EEE dd.MM.yyyy'}} {{data.appointment.startTime.$date | date: 'HH:mm'}}--<span *ngIf="!((data.appointment.endTime.$date | date: 'dd.MM') === (data.appointment.startTime.$date | date: 'dd.MM'))">{{data.appointment.endTime.$date | date: 'EEE dd.MM.yyyy '}}</span>{{data.appointment.endTime.$date | date: 'HH:mm'}} | {{data.appointment.notes}} -->
-<!-- <ion-content class="ion-padding"> -->
-  
-
+  </ion-accordion-group>
 </ion-content>
