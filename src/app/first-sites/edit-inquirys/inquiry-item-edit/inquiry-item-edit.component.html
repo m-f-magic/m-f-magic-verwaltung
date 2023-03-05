@@ -1,7 +1,14 @@
-<ion-accordion toggleIcon="caret-forward-outline">
-  <ion-item i18n detail="true" slot="header" color="grey">
+<ion-accordion toggleIcon="caret-forward-outline" i18n detail="true">
+  <ion-item *ngIf="!(data.event.status === 2)"  slot="header" color="grey">
     <ion-label>
-      <h2 class="headline">{{event.description}}</h2>
+      <h2 class="headline"><ion-icon name="alert-outline" *ngIf="data.event.status === 2"></ion-icon> {{event.description}}</h2>
+      <p>zuletzt bearbeitet: {{data.event.lastAction.$date | date: 'dd.MM.yyyy'}}</p>
+      <p></p>
+    </ion-label>
+  </ion-item>
+  <ion-item *ngIf="data.event.status === 2" slot="header" color="warning">
+    <ion-label>
+      <h2 class="headline"><ion-icon name="alert-outline" *ngIf="data.event.status === 2"></ion-icon> {{event.description}}</h2>
       <p>zuletzt bearbeitet: {{data.event.lastAction.$date | date: 'dd.MM.yyyy'}}</p>
       <p></p>
     </ion-label>
