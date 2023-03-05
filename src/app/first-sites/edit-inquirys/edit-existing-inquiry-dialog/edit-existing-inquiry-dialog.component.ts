@@ -49,9 +49,9 @@ export class EditExistingInquiryDialogComponent implements OnInit {
 
 
       this.dataHandler.putEndpoint("events", this.data.event, this.data.event._id.$oid);
-      this.dataHandler.putEndpoint("customer", this.data.customer, this.data.customer._id.$oid);
-      this.dataHandler.putEndpoint("adress", this.data.adress, this.data.adress._id.$oid);
-      this.dataHandler.putEndpoint("appointment", this.data.appointment, this.data.appointment._id.$oid);
+      this.dataHandler.putEndpoint("customers", this.data.customer, this.data.customer._id.$oid);
+      this.dataHandler.putEndpoint("addresses", this.data.adress, this.data.adress._id.$oid);
+      this.dataHandler.putEndpoint("appointments", this.data.appointment, this.data.appointment._id.$oid);
       // this.dataHandler.putEndpoint("offers", {"sender": this.sender, "additionalText": this.additionalText, "eventID": this.event._id.$oid}, this.event._id.$oid);
 
       return this.modalCtrl.dismiss('edited event', 'confirm');
