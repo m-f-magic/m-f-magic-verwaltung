@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { ValueAccessor } from '@ionic/angular/directives/control-value-accessors/value-accessor';
 import { BehaviorSubject } from 'rxjs';
 import { SingleEventDataService } from 'src/app/magic-components/single-event-data/single-event-data.service';
 
@@ -72,5 +73,40 @@ export class EditExistingInquiryDialogComponent implements OnInit {
     await alert.present();
 
     return await alert.onDidDismiss();
+  }
+
+  async selectStatus(){
+    const alert = await this.alertController.create({
+      header: "Bitte Status der Anfrage auswählen",
+      buttons: [
+        {
+          text: 'OK',
+          handler: (alertData) => {
+            this.data.event.status = alertData;
+            console.log(alertData);
+          }
+        }
+      ],
+      inputs: [
+        {
+          label: "offen",
+          type: 'radio',
+          value: 2
+        },
+        {
+          label: "abgesagt",
+          type: 'radio',
+          value: 20
+        },
+        {
+          label: "zugesagt",
+          type: 'radio',
+          value: 10
+        }
+      ]
+    });
+
+    await alert.present();
+    console.log(alert)
   }
 }

@@ -10,29 +10,25 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-
-  <ion-item>
-    <mat-form-field appearance="fill">
-      <mat-label>Status</mat-label>
-      <mat-select disableRipple value="{{data.event.status}}">
-        <mat-option value="1">offen</mat-option>
-        <mat-option value="2">zugesagt</mat-option>
-        <mat-option value="3">abgesagt</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </ion-item>
   
   <ion-item>
-    <ion-select value="{{data.event.status}}" [multiple]="false" interface="popover">
-      <ion-select-option value=1>offen</ion-select-option>
-      <ion-select-option value=2>zugesagt</ion-select-option>
-      <ion-select-option value=3>abgesagt</ion-select-option>
-    </ion-select>
+    <!-- in welchem Status ist die Anfrage:999 - manuell bearbeiten,  0 - offen / unbeantwortet, 1 - letzte Nachricht von uns (Bsp. Angebot gesendet), 2 - neue Nachricht vom Kunden | 10 - Zusage | 20 - Absage -->
+    <ion-label>Status: </ion-label>
+    <ion-chip color="success" *ngIf="data.event.status >= 10 && data.event.status < 20" (click)="selectStatus()">zugesagt</ion-chip>
+    <ion-chip color="danger" *ngIf="data.event.status >= 20 && data.event.status < 30" (click)="selectStatus()">abgesagt</ion-chip>
+    <ion-chip color="primary" *ngIf="data.event.status > 0 && data.event.status < 10" (click)="selectStatus()">offen</ion-chip>
+  </ion-item>
+  <ion-item>
+    <ion-label>Typ:</ion-label>
+    <ion-chip color="primary" *ngIf="data.event.soloType === 0">normal</ion-chip>
+    <ion-chip color="primary" *ngIf="data.event.soloType === 1">SOLO Felix</ion-chip>
+    <ion-chip color="primary" *ngIf="data.event.soloType === 2">SOLO Marvin</ion-chip>
   </ion-item>
 
   <ion-accordion-group [multiple]="true" class="accordionGroup" expand="inset">
 
     <app-edit-general-event-details [data]="data"></app-edit-general-event-details>
+    <app-edit-erlernen-details [data]="data" *ngIf="data.event.showType === 'ERLERNEN'"></app-edit-erlernen-details>
     <app-conversation-items-history [conversationItems]="data.conversationItems"></app-conversation-items-history>
 
     
