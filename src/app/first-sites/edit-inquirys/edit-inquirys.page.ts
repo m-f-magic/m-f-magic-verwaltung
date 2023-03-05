@@ -14,7 +14,7 @@ export class EditInquirysPage implements OnInit {
   constructor(private dataHandler: DataHandlerService) {
     // LOAD API DATA
     this.loadApiData();
-    let id = this.appointments[0].location.$oid;
+    // let id = this.appointments[0].location.$oid;
   }
 
   ngOnInit() {

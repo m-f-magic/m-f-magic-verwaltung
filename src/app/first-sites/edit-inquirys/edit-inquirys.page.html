@@ -1,4 +1,5 @@
 <app-page-layout [name]="'Anfragenbearbeitung'" >
+  <strong *ngIf="events.length === 0">Keine Daten vorhanden.</strong>
   <ion-accordion-group [multiple]="false" class="accordionGroup" expand="inset">
     <app-inquiry-item-edit [event]="ev" *ngFor="let ev of events; index as i; first as isFirst" class="inquiry-item-edit" lines="inset"></app-inquiry-item-edit>
   </ion-accordion-group>
