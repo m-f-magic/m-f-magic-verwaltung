@@ -1,0 +1,43 @@
+<ion-accordion toggleIcon="caret-forward-outline">
+  <ion-item i18n detail="true" slot="header" color="primary">
+    <ion-label>
+
+      <h2 class="headline">bisherige Daten ERLERNEN</h2>
+    </ion-label>
+  </ion-item>
+
+  <div class="ion-padding" slot="content">
+  
+
+  <ion-label>Daten bearbeiten <ion-toggle color="medium" (ionChange)="changeEditable()" [checked]="false" class="ion-no-margin ion-no-padding"></ion-toggle></ion-label>
+    <ion-grid [fixed]="true" class="ion-no-margin">
+      <ion-row class="ion-align-items-center ion-no-padding">
+        <ion-col size="auto"><ion-icon name="logo-euro" class="ion-no-margin ion-no-padding"></ion-icon></ion-col>
+        <ion-col size="3">Grund: <ion-input [disabled]="editable | async" [(ngModel)]="data.event.basePrice" class="input ion-no-margin ion-no-padding" type="number"></ion-input></ion-col>
+        <ion-col size="3"> Fahrt: <ion-input [disabled]="editable | async" [(ngModel)]="data.event.driveCostTotal" class="input ion-no-margin ion-no-padding" type="number"></ion-input></ion-col>
+        <ion-col size="4"> Preis/Kind: <ion-input [disabled]="editable | async" [(ngModel)]="data.event.pricePerPerson" class="input ion-no-margin ion-no-padding" type="number"></ion-input></ion-col>
+      </ion-row>
+
+      <ion-row class="ion-align-items-center ion-no-padding">
+        <ion-col size="auto"><ion-icon name="people-outline" class="ion-no-margin ion-no-padding"></ion-icon></ion-col>
+        <ion-col>Anzahl Kinder: <ion-input [disabled]="editable | async" [(ngModel)]="data.event.guests" class="input ion-no-margin ion-no-padding" type="number"></ion-input></ion-col>
+      </ion-row>
+
+      <ion-row class="ion-align-items-center ion-no-padding">
+        <ion-col size="auto"><ion-icon name="accessibility-outline" class="ion-no-margin ion-no-padding"></ion-icon></ion-col>
+        <ion-col>Alter Kinder: <ion-input [disabled]="editable | async" [(ngModel)]="data.event.age" class="input ion-no-margin ion-no-padding" type="number"></ion-input></ion-col>
+      </ion-row>
+
+      <ion-row class="ion-align-items-center ion-no-padding">
+        <ion-col size="auto"><ion-icon name="sparkles-outline" class="ion-no-margin ion-no-padding"></ion-icon></ion-col>
+        <ion-col size="10">Tricks: <ion-select interface="popover" placeholder="Tricks auswählen..." [disabled]="editable | async" [(ngModel)]="data.event.tricks" class="ion-no-margin ion-no-padding" [multiple]="true">
+          <ion-select-option value="erscheinender Zauberstag">erscheinender Zauberstab</ion-select-option>
+          <ion-select-option value="Mentaltrick">Mentaltrick</ion-select-option>
+          <ion-select-option value="Würfelbombe">Würfelbombe</ion-select-option>
+          <ion-select-option value="Tresorkarte">Tresorkarte</ion-select-option>
+          <ion-select-option value="Kartenhälften">Kartenhälften</ion-select-option>
+        </ion-select></ion-col>
+      </ion-row>
+    </ion-grid>
+</div>
+</ion-accordion>

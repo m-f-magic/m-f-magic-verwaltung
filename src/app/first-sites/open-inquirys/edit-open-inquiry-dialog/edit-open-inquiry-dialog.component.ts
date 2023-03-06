@@ -14,6 +14,7 @@ export class EditOpenInquiryDialogComponent implements OnInit {
   // @ViewChild('eventTarget', { static: true }) eventTarget: ElementRef;
   
   public sender: any;
+  data: any
   event: any;
   adress: any;
   appointment: any;
@@ -45,8 +46,12 @@ export class EditOpenInquiryDialogComponent implements OnInit {
     if (this.event._cls =="Event.EventERLERNEN"){
       this.event['basePrice'] = this.defaultOffer.ERLERNEN.prices.basePrice;
       this.event['pricePerPerson'] = this.defaultOffer.ERLERNEN.prices.pricePerChildren;
-      if (this.adress.hasOwnProperty("driveCostTotal")) {
-        this.event['driveCostTotal'] = this.adress.driveCostTotal;
+      console.log(this.event)
+      console.log(this.adress)
+      if (this.adress) {
+        if (this.adress.hasOwnProperty("driveCostTotal")) {
+          this.event['driveCostTotal'] = this.adress.driveCostTotal;
+        }
       } else {
         this.event['driveCostTotal'] = this.defaultOffer.ERLERNEN.prices.driveCostMin;
       }

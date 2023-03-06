@@ -16,6 +16,7 @@ import { AutosizeModule } from 'ngx-autosize';
 import { ConversationItemsHistoryComponent } from './conversation-items-history/conversation-items-history.component';
 import { MaterialModule } from 'src/app/basics/material.module';
 import { EditGeneralEventDetailsComponent } from './edit-general-event-details/edit-general-event-details.component';
+import { EditErlernenDetailsComponent } from './edit-erlernen-details/edit-erlernen-details.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,13 @@ import { EditGeneralEventDetailsComponent } from './edit-general-event-details/e
     ShortEventDetailsModule,
     AutosizeModule
   ],
-  declarations: [EditInquirysPage, InquiryItemEditComponent, EditExistingInquiryDialogComponent, ConversationItemsHistoryComponent, EditGeneralEventDetailsComponent]
+  declarations: [
+    EditInquirysPage,
+    InquiryItemEditComponent,
+    EditExistingInquiryDialogComponent,
+    ConversationItemsHistoryComponent,
+    EditGeneralEventDetailsComponent,
+    EditErlernenDetailsComponent
+  ]
 })
 export class EditInquirysPageModule {}

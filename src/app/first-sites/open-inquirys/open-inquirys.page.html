@@ -1,4 +1,5 @@
 <app-page-layout [name]="'offene Anfragen'" >
+  <strong *ngIf="events.length === 0">Keine Daten vorhanden.</strong>
   <!-- {{appointments[0]}} -->
   <!-- <ion-list *ngFor="let a of appointments; index as i; first as isFirst" class="appointment_item" lines="inset"> -->
   <ion-accordion-group [multiple]="false" class="accordionGroup" expand="inset">

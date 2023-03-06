@@ -10,36 +10,28 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-
-<ion-accordion-group [multiple]="true" class="accordionGroup" expand="inset">
-
-  <app-edit-general-event-details [data]="data"></app-edit-general-event-details>
-
-
-  <ion-accordion toggleIcon="caret-forward-outline">
-    <ion-item i18n detail="true" slot="header" color="primary">
-      <ion-label>
   
-        <h2 class="headline">bisherige Nachrichten</h2>
-      </ion-label>
-    </ion-item>
-  
-    <div class="ion-padding" slot="content">
-      <app-conversation-items-history [conversationItems]="data.conversationItems"></app-conversation-items-history>
-    </div>
-  </ion-accordion>
+  <ion-item>
+    <!-- in welchem Status ist die Anfrage:999 - manuell bearbeiten,  0 - offen / unbeantwortet, 1 - letzte Nachricht von uns (Bsp. Angebot gesendet), 2 - neue Nachricht vom Kunden | 10 - Zusage | 20 - Absage -->
+    <ion-label>Status: </ion-label>
+    <ion-chip color="success" *ngIf="data.event.status >= 10 && data.event.status < 20" (click)="selectStatus()">zugesagt</ion-chip>
+    <ion-chip color="danger" *ngIf="data.event.status >= 20 && data.event.status < 30" (click)="selectStatus()">abgesagt</ion-chip>
+    <ion-chip color="primary" *ngIf="data.event.status > 0 && data.event.status < 10" (click)="selectStatus()">offen</ion-chip>
+  </ion-item>
+  <ion-item>
+    <ion-label>Typ:</ion-label>
+    <ion-chip color="primary" *ngIf="data.event.soloType === 0">normal</ion-chip>
+    <ion-chip color="primary" *ngIf="data.event.soloType === 1">SOLO Felix</ion-chip>
+    <ion-chip color="primary" *ngIf="data.event.soloType === 2">SOLO Marvin</ion-chip>
+  </ion-item>
 
-  
+  <ion-accordion-group [multiple]="true" class="accordionGroup" expand="inset">
 
-</ion-accordion-group>
+    <app-edit-general-event-details [data]="data"></app-edit-general-event-details>
+    <app-edit-erlernen-details [data]="data" *ngIf="data.event.showType === 'ERLERNEN'"></app-edit-erlernen-details>
+    <app-conversation-items-history [conversationItems]="data.conversationItems"></app-conversation-items-history>
 
-<!-- </ion-content> -->
+    
 
-  
-  
-  <!-- OLD APPOINTMENT -->
-    <!-- {{data.appointment.startTime.$date | date: 'EEE dd.MM.yyyy'}} {{data.appointment.startTime.$date | date: 'HH:mm'}}--<span *ngIf="!((data.appointment.endTime.$date | date: 'dd.MM') === (data.appointment.startTime.$date | date: 'dd.MM'))">{{data.appointment.endTime.$date | date: 'EEE dd.MM.yyyy '}}</span>{{data.appointment.endTime.$date | date: 'HH:mm'}} | {{data.appointment.notes}} -->
-<!-- <ion-content class="ion-padding"> -->
-  
-
+  </ion-accordion-group>
 </ion-content>

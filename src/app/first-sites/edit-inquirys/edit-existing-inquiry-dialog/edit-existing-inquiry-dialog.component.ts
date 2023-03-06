@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { ValueAccessor } from '@ionic/angular/directives/control-value-accessors/value-accessor';
 import { BehaviorSubject } from 'rxjs';
+import { DataHandlerService } from 'src/app/data/data-handler.service';
 import { SingleEventDataService } from 'src/app/magic-components/single-event-data/single-event-data.service';
 
 @Component({
@@ -19,6 +21,7 @@ export class EditExistingInquiryDialogComponent implements OnInit {
 
   constructor(
     public data: SingleEventDataService,
+    private dataHandler: DataHandlerService,
     private modalCtrl: ModalController,
     private alertController: AlertController,
     private loadingCtrl: LoadingController,
@@ -45,7 +48,10 @@ export class EditExistingInquiryDialogComponent implements OnInit {
       // const loading 
 
 
-      // this.dataHandler.putEndpoint("events", this.event, this.event._id.$oid);
+      this.dataHandler.putEndpoint("events", this.data.event, this.data.event._id.$oid);
+      this.dataHandler.putEndpoint("customers", this.data.customer, this.data.customer._id.$oid);
+      this.dataHandler.putEndpoint("addresses", this.data.adress, this.data.adress._id.$oid);
+      this.dataHandler.putEndpoint("appointments", this.data.appointment, this.data.appointment._id.$oid);
       // this.dataHandler.putEndpoint("offers", {"sender": this.sender, "additionalText": this.additionalText, "eventID": this.event._id.$oid}, this.event._id.$oid);
 
       return this.modalCtrl.dismiss('edited event', 'confirm');
@@ -72,5 +78,40 @@ export class EditExistingInquiryDialogComponent implements OnInit {
     await alert.present();
 
     return await alert.onDidDismiss();
+  }
+
+  async selectStatus(){
+    const alert = await this.alertController.create({
+      header: "Bitte Status der Anfrage auswählen",
+      buttons: [
+        {
+          text: 'OK',
+          handler: (alertData) => {
+            this.data.event.status = alertData;
+            console.log(alertData);
+          }
+        }
+      ],
+      inputs: [
+        {
+          label: "offen",
+          type: 'radio',
+          value: 2
+        },
+        {
+          label: "abgesagt",
+          type: 'radio',
+          value: 20
+        },
+        {
+          label: "zugesagt",
+          type: 'radio',
+          value: 10
+        }
+      ]
+    });
+
+    await alert.present();
+    console.log(alert)
   }
 }

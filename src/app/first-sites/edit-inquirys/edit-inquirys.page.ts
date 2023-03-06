@@ -14,7 +14,7 @@ export class EditInquirysPage implements OnInit {
   constructor(private dataHandler: DataHandlerService) {
     // LOAD API DATA
     this.loadApiData();
-    let id = this.appointments[0].location.$oid;
+    // let id = this.appointments[0].location.$oid;
   }
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class EditInquirysPage implements OnInit {
     this.dataHandler.events.subscribe(data => {
       this.events = [];
       for (let ev of data){
-        if (!(ev.status === 0)){
+        if (ev.status > 0 && ev.status < 20){
           this.events.push(ev);
         }
       };

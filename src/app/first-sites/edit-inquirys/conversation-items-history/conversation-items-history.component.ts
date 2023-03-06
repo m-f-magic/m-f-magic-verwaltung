@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ConversationItemsHistoryComponent implements OnInit {
   @Input() conversationItems: any;
-  newMsg: string;
+  newMsg: string = "";
 
   constructor() { }
 

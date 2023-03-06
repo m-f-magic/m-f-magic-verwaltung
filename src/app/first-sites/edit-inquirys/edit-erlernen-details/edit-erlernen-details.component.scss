@@ -1,6 +1,15 @@
 ion-input{
     // border: 1px solid #ffff;
-    // flex: 0 0 100% !important;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    // flex: 0 0 100% !important
+}
+ion-input.input{
+    max-width: 100px;
 }
 
 ion-modal {
@@ -14,13 +23,3 @@ ion-modal {
       }
     }
   }
-
-.notes-input{
-  width: 100%;
-  border: 1px solid var(--ionc-color-medium);
-  border-radius: 10px;
-  background: #ffffff;
-  resize: none;
-  padding-left: 10px;
-  padding-right: 10px;
-}

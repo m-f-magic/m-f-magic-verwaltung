@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { DataHandlerService } from 'src/app/data/data-handler.service';
 import { EditOpenInquiryDialogComponent } from '../edit-open-inquiry-dialog/edit-open-inquiry-dialog.component';
 
@@ -16,7 +16,7 @@ export class InquiryItemComponent implements OnInit {
   conversationItem: any;
   customer: any;
 
-  constructor(private dataHandler: DataHandlerService, private modalCtrl: ModalController) {
+  constructor(private dataHandler: DataHandlerService, private modalCtrl: ModalController, private alertController: AlertController) {
     this.now = new Date();
    }
 
@@ -53,7 +53,35 @@ export class InquiryItemComponent implements OnInit {
     const { data, role } = await modal.onWillDismiss();
   }
   
-  manual(){
-    console.log("Manuell bearbeiten")
+  async manual(){
+    const {role} = await this.presentAlertManual();
+    if (role == 'confirm'){
+      // const loading 
+
+      this.event.status = 999;
+
+      this.dataHandler.putEndpoint("events", this.event, this.event._id.$oid);
+    }
   }
+
+  async presentAlertManual() {
+    const alert = await this.alertController.create({
+      header: 'Manuell bearbeiten',
+      buttons: [
+        {
+          text: 'Nein',
+          role: 'cancel'
+        },
+        {
+          text: 'Ja',
+          role: 'confirm'
+        }
+      ]
+    });
+
+    await alert.present();
+
+    return await alert.onDidDismiss();
+  }
+
 }
